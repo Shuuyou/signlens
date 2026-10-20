@@ -1,0 +1,78 @@
+{
+  "name": "深圳市鼎盛建筑劳务有限公司",
+  "aliases": [
+    "鼎盛劳务",
+    "深圳鼎盛建筑劳务",
+    "鼎盛建筑劳务",
+    "深圳鼎盛劳务"
+  ],
+  "demo": true,
+  "flags": [
+    "法定代表人频繁变更：12 个月内变更 3 次",
+    "存在行政处罚记录：1 条（拖欠劳动报酬）",
+    "涉诉 12 起，其中劳动争议 8 起"
+  ],
+  "facts": [
+    {
+      "key": "registration_status",
+      "label": "登记状态",
+      "value": "存续（在营、开业、在册）",
+      "source_url": "https://www.gsxt.gov.cn/",
+      "retrieved_at": "2026-10-18",
+      "severity": "info"
+    },
+    {
+      "key": "established_at",
+      "label": "成立日期",
+      "value": "2019-11-05",
+      "source_url": "https://www.gsxt.gov.cn/",
+      "retrieved_at": "2026-10-18",
+      "severity": "info"
+    },
+    {
+      "key": "legal_representative",
+      "label": "法定代表人",
+      "value": "近 12 个月变更 3 次（2025-12、2026-04、2026-09），现任法定代表人 2026-09 接任",
+      "source_url": "https://www.gsxt.gov.cn/",
+      "retrieved_at": "2026-10-18",
+      "severity": "high"
+    },
+    {
+      "key": "registered_capital",
+      "label": "注册资本",
+      "value": "500 万元人民币（实缴 500 万元）",
+      "source_url": "https://www.gsxt.gov.cn/",
+      "retrieved_at": "2026-10-18",
+      "severity": "info"
+    },
+    {
+      "key": "insured_staff",
+      "label": "参保人数",
+      "value": "46 人（2025 年度报告）",
+      "source_url": "https://www.gsxt.gov.cn/",
+      "retrieved_at": "2026-10-18",
+      "severity": "info"
+    },
+    {
+      "key": "admin_penalty",
+      "label": "行政处罚",
+      "value": "1 条：2026-02-10 因拖欠劳务人员劳动报酬被深圳市南山区人力资源局罚款 5 万元",
+      "source_url": "https://www.creditchina.gov.cn/",
+      "retrieved_at": "2026-10-18",
+      "severity": "high"
+    },
+    {
+      "key": "litigation",
+      "label": "涉诉情况",
+      "value": "劳动争议 8 起、建设工程分包合同纠纷 4 起，2025 年以来新增 5 起",
+      "source_url": "https://wenshu.court.gov.cn/",
+      "retrieved_at": "2026-10-18",
+      "severity": "warn"
+    }
+  ],
+  "sources": [
+    "https://www.gsxt.gov.cn/",
+    "https://wenshu.court.gov.cn/",
+    "https://www.creditchina.gov.cn/"
+  ]
+}

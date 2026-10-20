@@ -1,0 +1,69 @@
+{
+  "name": "成都锐行物流有限公司",
+  "aliases": [
+    "锐行物流",
+    "成都锐行物流",
+    "锐行货运"
+  ],
+  "demo": true,
+  "flags": [
+    "成立未满 3 年（2024-08 成立）",
+    "参保人数 4 人",
+    "涉诉 2 起（货物运输合同纠纷）"
+  ],
+  "facts": [
+    {
+      "key": "registration_status",
+      "label": "登记状态",
+      "value": "存续（在营、开业、在册）",
+      "source_url": "https://www.gsxt.gov.cn/",
+      "retrieved_at": "2026-10-18",
+      "severity": "info"
+    },
+    {
+      "key": "established_at",
+      "label": "成立日期",
+      "value": "2024-08-22（成立未满 3 年）",
+      "source_url": "https://www.gsxt.gov.cn/",
+      "retrieved_at": "2026-10-18",
+      "severity": "warn"
+    },
+    {
+      "key": "registered_capital",
+      "label": "注册资本",
+      "value": "300 万元人民币（认缴 300 万元，实缴 120 万元）",
+      "source_url": "https://www.gsxt.gov.cn/",
+      "retrieved_at": "2026-10-18",
+      "severity": "warn"
+    },
+    {
+      "key": "insured_staff",
+      "label": "参保人数",
+      "value": "4 人（2025 年度报告）",
+      "source_url": "https://www.gsxt.gov.cn/",
+      "retrieved_at": "2026-10-18",
+      "severity": "warn"
+    },
+    {
+      "key": "license",
+      "label": "道路运输经营许可",
+      "value": "许可证有效期至 2027-05-31",
+      "source_url": "https://www.gsxt.gov.cn/",
+      "retrieved_at": "2026-10-18",
+      "severity": "info"
+    },
+    {
+      "key": "litigation",
+      "label": "涉诉情况",
+      "value": "货物运输合同纠纷 2 起，标的分别为 2.8 万元、5.1 万元，均在审理中",
+      "source_url": "https://wenshu.court.gov.cn/",
+      "retrieved_at": "2026-10-18",
+      "severity": "warn"
+    }
+  ],
+  "sources": [
+    "https://www.gsxt.gov.cn/",
+    "https://wenshu.court.gov.cn/",
+    "https://www.creditchina.gov.cn/"
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "name": "星启未来（杭州）教育科技有限公司",
+  "aliases": [
+    "星启未来",
+    "星启教育",
+    "星启未来教育",
+    "星启未来（杭州）教育科技"
+  ],
+  "demo": true,
+  "flags": [
+    "存在行政处罚记录：2 条（虚假宣传、超范围经营）",
+    "曾被列入经营异常名录：2026-04 至 2026-06",
+    "涉诉 7 起，其中 5 起为学员起诉退费"
+  ],
+  "facts": [
+    {
+      "key": "registration_status",
+      "label": "登记状态",
+      "value": "存续（在营、开业、在册）",
+      "source_url": "https://www.gsxt.gov.cn/",
+      "retrieved_at": "2026-10-18",
+      "severity": "info"
+    },
+    {
+      "key": "established_at",
+      "label": "成立日期",
+      "value": "2022-08-09",
+      "source_url": "https://www.gsxt.gov.cn/",
+      "retrieved_at": "2026-10-18",
+      "severity": "info"
+    },
+    {
+      "key": "registered_capital",
+      "label": "注册资本",
+      "value": "200 万元人民币（认缴 200 万元，实缴 50 万元）",
+      "source_url": "https://www.gsxt.gov.cn/",
+      "retrieved_at": "2026-10-18",
+      "severity": "warn"
+    },
+    {
+      "key": "insured_staff",
+      "label": "参保人数",
+      "value": "11 人（2025 年度报告）",
+      "source_url": "https://www.gsxt.gov.cn/",
+      "retrieved_at": "2026-10-18",
+      "severity": "info"
+    },
+    {
+      "key": "admin_penalty",
+      "label": "行政处罚",
+      "value": "2 条：2025-05-12 因宣传“保底就业”构成虚假宣传，罚款 15 万元；2026-01-08 因超出登记经营范围开展培训，罚款 3 万元",
+      "source_url": "https://www.creditchina.gov.cn/",
+      "retrieved_at": "2026-10-18",
+      "severity": "high"
+    },
+    {
+      "key": "abnormal_operation",
+      "label": "经营异常名录",
+      "value": "2026-04-02 因通过登记的住所无法联系被列入，2026-06-19 移出",
+      "source_url": "https://www.gsxt.gov.cn/",
+      "retrieved_at": "2026-10-18",
+      "severity": "high"
+    },
+    {
+      "key": "litigation",
+      "label": "涉诉情况",
+      "value": "教育培训合同纠纷 7 起，其中 5 起为学员起诉要求退费，2 起已判决支持学员",
+      "source_url": "https://wenshu.court.gov.cn/",
+      "retrieved_at": "2026-10-18",
+      "severity": "warn"
+    }
+  ],
+  "sources": [
+    "https://www.gsxt.gov.cn/",
+    "https://wenshu.court.gov.cn/",
+    "https://www.creditchina.gov.cn/"
+  ]
+}

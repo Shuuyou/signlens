@@ -1,0 +1,69 @@
+{
+  "name": "苏州恒益精密制造有限公司",
+  "aliases": [
+    "恒益精密",
+    "苏州恒益精密制造",
+    "恒益制造",
+    "苏州恒益"
+  ],
+  "demo": true,
+  "flags": [
+    "存续 13 年，参保 156 人",
+    "注册资本实缴 2000 万元，近 3 年无重大诉讼与不良信用记录"
+  ],
+  "facts": [
+    {
+      "key": "registration_status",
+      "label": "登记状态",
+      "value": "存续（在营、开业、在册）",
+      "source_url": "https://www.gsxt.gov.cn/",
+      "retrieved_at": "2026-10-18",
+      "severity": "info"
+    },
+    {
+      "key": "established_at",
+      "label": "成立日期",
+      "value": "2013-09-06（存续 13 年）",
+      "source_url": "https://www.gsxt.gov.cn/",
+      "retrieved_at": "2026-10-18",
+      "severity": "info"
+    },
+    {
+      "key": "registered_capital",
+      "label": "注册资本",
+      "value": "2000 万元人民币（实缴 2000 万元）",
+      "source_url": "https://www.gsxt.gov.cn/",
+      "retrieved_at": "2026-10-18",
+      "severity": "info"
+    },
+    {
+      "key": "insured_staff",
+      "label": "参保人数",
+      "value": "156 人（2025 年度报告）",
+      "source_url": "https://www.gsxt.gov.cn/",
+      "retrieved_at": "2026-10-18",
+      "severity": "info"
+    },
+    {
+      "key": "qualification",
+      "label": "资质",
+      "value": "高新技术企业（有效期至 2027-12），ISO 9001 质量管理体系认证在有效期内",
+      "source_url": "https://www.gsxt.gov.cn/",
+      "retrieved_at": "2026-10-18",
+      "severity": "info"
+    },
+    {
+      "key": "litigation",
+      "label": "涉诉情况",
+      "value": "买卖合同纠纷 2 起，均作为原告胜诉",
+      "source_url": "https://wenshu.court.gov.cn/",
+      "retrieved_at": "2026-10-18",
+      "severity": "info"
+    }
+  ],
+  "sources": [
+    "https://www.gsxt.gov.cn/",
+    "https://wenshu.court.gov.cn/",
+    "https://www.creditchina.gov.cn/"
+  ]
+}

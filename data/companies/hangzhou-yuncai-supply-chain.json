@@ -1,0 +1,81 @@
+{
+  "name": "杭州云采供应链有限公司",
+  "aliases": [
+    "云采供应链",
+    "杭州云采供应链",
+    "云采供应链（杭州）",
+    "云采供应链有限公司",
+    "Hangzhou Yuncai Supply Chain Co., Ltd."
+  ],
+  "demo": true,
+  "flags": [
+    "存在被执行记录：2 条未履行，执行标的合计 60.9 万元",
+    "1 条行政处罚：虚假宣传，罚款 8 万元",
+    "注册资本 100 万元全部认缴，实缴 0 元",
+    "参保人数仅 3 人，成立未满 3 年"
+  ],
+  "facts": [
+    {
+      "key": "registration_status",
+      "label": "登记状态",
+      "value": "存续（在营、开业、在册）",
+      "source_url": "https://www.gsxt.gov.cn/",
+      "retrieved_at": "2026-10-18",
+      "severity": "info"
+    },
+    {
+      "key": "established_at",
+      "label": "成立日期",
+      "value": "2023-04-12（成立未满 3 年）",
+      "source_url": "https://www.gsxt.gov.cn/",
+      "retrieved_at": "2026-10-18",
+      "severity": "warn"
+    },
+    {
+      "key": "registered_capital",
+      "label": "注册资本",
+      "value": "100 万元人民币（认缴 100 万元，实缴 0 元）",
+      "source_url": "https://www.gsxt.gov.cn/",
+      "retrieved_at": "2026-10-18",
+      "severity": "warn"
+    },
+    {
+      "key": "insured_staff",
+      "label": "参保人数",
+      "value": "3 人（2025 年度报告）",
+      "source_url": "https://www.gsxt.gov.cn/",
+      "retrieved_at": "2026-10-18",
+      "severity": "warn"
+    },
+    {
+      "key": "enforcement",
+      "label": "被执行记录",
+      "value": "2 条：2025-11-03 立案，执行标的 48.6 万元，未履行；2026-03-17 立案，执行标的 12.3 万元，未履行",
+      "source_url": "https://zxgk.court.gov.cn/",
+      "retrieved_at": "2026-10-18",
+      "severity": "high"
+    },
+    {
+      "key": "admin_penalty",
+      "label": "行政处罚",
+      "value": "1 条：2025-03-21 因虚假宣传被杭州市余杭区市场监督管理局罚款 8 万元",
+      "source_url": "https://www.creditchina.gov.cn/",
+      "retrieved_at": "2026-10-18",
+      "severity": "high"
+    },
+    {
+      "key": "litigation",
+      "label": "涉诉情况",
+      "value": "买卖合同纠纷 3 起，其中 2 起该公司为被告",
+      "source_url": "https://wenshu.court.gov.cn/",
+      "retrieved_at": "2026-10-18",
+      "severity": "warn"
+    }
+  ],
+  "sources": [
+    "https://www.gsxt.gov.cn/",
+    "https://zxgk.court.gov.cn/",
+    "https://wenshu.court.gov.cn/",
+    "https://www.creditchina.gov.cn/"
+  ]
+}

@@ -1,0 +1,12 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+node_modules/
+# frontend/dist 需要入库，供 deploy/Dockerfile.static 使用
+backend/static/
+data/*.sqlite*
+.env
+*.log
+.DS_Store
+.shots/

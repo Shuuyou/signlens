@@ -1,0 +1,72 @@
+/* All brand paint inherits currentColor. Mask black/white are transparency math. */
+.xiacha { display:inline-block; flex:none; overflow:visible; vertical-align:middle; color:inherit; }
+.xiacha .xc-head { transform-box:fill-box; transform-origin:50% 70%; }
+.xiacha .xc-eye { transform-box:fill-box; transform-origin:center; animation:xc-blink 6.4s ease-in-out infinite; }
+.xiacha .xc-gaze { transform-box:fill-box; transform-origin:center; }
+.xiacha .xc-shadow { opacity:.09; transform-box:fill-box; transform-origin:center; }
+.xiacha .xc-smile-eyes, .xiacha .xc-prop { display:none; }
+.xiacha .xc-prop { opacity:.65; }
+.xiacha[data-state="idle"] .xc-head { animation:xc-breathe 4.8s ease-in-out infinite; }
+.xiacha[data-state="planning"] .xc-head { animation:xc-plan 3.6s ease-in-out infinite; }
+.xiacha[data-state="planning"] .xc-gaze { transform:translate(1px,-3px); }
+.xiacha[data-state="planning"] .xc-notes { display:inline; }
+.xiacha[data-state="planning"] .xc-note-one { animation:xc-note 3.6s ease-in-out infinite; }
+.xiacha[data-state="planning"] .xc-note-two { animation:xc-note 3.6s .25s ease-in-out infinite; }
+.xiacha[data-state="planning"] .xc-note-three { animation:xc-note 3.6s .5s ease-in-out infinite; }
+.xiacha[data-state="searching"] .xc-head { animation:xc-search-head 3.8s ease-in-out infinite; }
+.xiacha[data-state="searching"] .xc-gaze { animation:xc-search-gaze 3.8s ease-in-out infinite; }
+.xiacha[data-state="reading"] .xc-head { transform:rotate(3deg); }
+.xiacha[data-state="reading"] .xc-gaze { animation:xc-read 3.4s ease-in-out infinite; }
+.xiacha[data-state="reading"] .xc-paper { display:inline; }
+.xiacha[data-state="reading"] .xc-paper-line-one { animation:xc-note 3.4s ease-in-out infinite; }
+.xiacha[data-state="reading"] .xc-paper-line-two { animation:xc-note 3.4s .4s ease-in-out infinite; }
+.xiacha[data-state="thinking"] .xc-head { animation:xc-think 4.2s ease-in-out infinite; }
+.xiacha[data-state="thinking"] .xc-gaze { transform:translate(-2px,-2px); }
+.xiacha[data-state="thinking"] .xc-eye-right { animation:xc-squint 4.2s ease-in-out infinite; }
+.xiacha[data-state="verifying"] .xc-head { animation:xc-verify-head 3.2s ease-in-out infinite; }
+.xiacha[data-state="verifying"] .xc-gaze { animation:xc-verify-gaze 3.2s ease-in-out infinite; }
+.xiacha[data-state="verifying"] .xc-compare { display:inline; }
+.xiacha[data-state="verifying"] .xc-compare-line { animation:xc-note 3.2s ease-in-out infinite; }
+.xiacha[data-state="waiting"] .xc-head { transform:rotate(-5deg); }
+.xiacha[data-state="waiting"] .xc-gaze { transform:translate(3px,-1px); }
+.xiacha[data-state="waiting"] .xc-eye { animation:xc-blink 8s ease-in-out infinite; }
+.xiacha[data-state="done"] .xc-head { animation:xc-nod .9s ease-in-out 1 both; }
+.xiacha[data-state="done"] .xc-open-eyes { display:none; }
+.xiacha[data-state="done"] .xc-smile-eyes { display:inline; }
+.xiacha[data-state="insufficient"] .xc-head { transform:rotate(-7deg); animation:xc-unsure 1.1s ease-in-out 1 both; }
+.xiacha[data-state="insufficient"] .xc-gaze { transform:translate(-2px,1px); }
+.xiacha[data-state="insufficient"] .xc-eye-right { animation:none; transform:scaleY(.7); }
+.xiacha[data-state="insufficient"] .xc-missing { display:inline; }
+.xiacha[data-state="error"] .xc-head { animation:xc-shake .7s ease-in-out 1 both; }
+.xiacha[data-state="error"] .xc-eye { animation:none; transform:scaleY(.58); }
+.xiacha[data-compact="true"] .xc-prop, .xiacha[data-compact="true"] .xc-shadow { display:none; }
+/* Navigation-sized faces are landmarks; expressive motion belongs to the stage. */
+.xiacha[data-compact="true"] * { animation:none !important; }
+.xiacha[data-paused="true"] *, .xiacha[data-paused="true"] { animation-play-state:paused !important; }
+.xiacha[data-static="true"] * { animation:none !important; }
+/* Static expressions remain meaningful when all motion is disabled. */
+.xiacha[data-static="true"][data-state="searching"] .xc-gaze { transform:translate(4px,0); }
+.xiacha[data-static="true"][data-state="reading"] .xc-gaze { transform:translate(3px,4px); }
+.xiacha[data-static="true"][data-state="thinking"] .xc-head { transform:rotate(-6deg); }
+.xiacha[data-static="true"][data-state="verifying"] .xc-gaze { transform:translate(4px,2px); }
+@media (prefers-reduced-motion:reduce) {
+  .xiacha * { animation:none !important; }
+  .xiacha[data-state="searching"] .xc-gaze { transform:translate(4px,0); }
+  .xiacha[data-state="reading"] .xc-gaze { transform:translate(3px,4px); }
+  .xiacha[data-state="thinking"] .xc-head { transform:rotate(-6deg); }
+  .xiacha[data-state="verifying"] .xc-gaze { transform:translate(4px,2px); }
+}
+@keyframes xc-breathe { 0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-1px) scale(1.012,1.008)} }
+@keyframes xc-blink { 0%,40%,44%,100%{transform:scaleY(1)}42%{transform:scaleY(.1)} }
+@keyframes xc-plan { 0%,100%{transform:rotate(0)}45%,65%{transform:rotate(-4deg)} }
+@keyframes xc-note { 0%,100%{opacity:.45}35%,65%{opacity:1} }
+@keyframes xc-search-head { 0%,100%{transform:rotate(0)}22%,38%{transform:rotate(-3deg)}62%,78%{transform:rotate(3deg)} }
+@keyframes xc-search-gaze { 0%,100%{transform:translate(0,0)}22%,38%{transform:translate(-4px,0)}62%,78%{transform:translate(4px,0)} }
+@keyframes xc-read { 0%,100%{transform:translate(-2px,2px)}35%{transform:translate(4px,2px)}40%{transform:translate(-2px,4px)}75%,88%{transform:translate(4px,4px)} }
+@keyframes xc-think { 0%,100%{transform:rotate(-3deg)}40%,65%{transform:rotate(-7deg)} }
+@keyframes xc-squint { 0%,100%{transform:scaleY(1)}40%,65%{transform:scaleY(.6)} }
+@keyframes xc-verify-head { 0%,100%{transform:rotate(1deg)}45%,65%{transform:rotate(4deg)} }
+@keyframes xc-verify-gaze { 0%,100%{transform:translate(0,0)}30%,42%{transform:translate(4px,2px)}58%,70%{transform:translate(-1px,-2px)} }
+@keyframes xc-nod { 0%{transform:translateY(0) rotate(0)}35%{transform:translateY(4px) rotate(4deg)}70%{transform:translateY(-1px) rotate(-2deg)}100%{transform:translateY(0) rotate(0)} }
+@keyframes xc-unsure { 0%{transform:rotate(0)}45%{transform:rotate(-9deg)}100%{transform:rotate(-7deg)} }
+@keyframes xc-shake { 0%,100%{transform:translateX(0)}20%{transform:translateX(-3px)}40%{transform:translateX(3px)}60%{transform:translateX(-2px)}80%{transform:translateX(1px)} }

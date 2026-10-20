@@ -1,0 +1,1999 @@
+/* Report page + print overrides — Agent B owns this file.
+   Editorial "paper decision brief" treatment, ported from Mingcha:
+   warm paper, hairline rules, numbered findings, law blockquotes. */
+
+/* ------------------------------------------------------------------ */
+/* Scope: retire the old navy/amber SaaS palette inside the report.    */
+/* ------------------------------------------------------------------ */
+
+.report-page {
+  --navy-950: var(--mc-ink);
+  --navy-900: var(--mc-ink);
+  --navy-800: var(--mc-ink);
+  --navy-700: var(--mc-green);
+  --ink: var(--mc-ink);
+  --muted: var(--mc-ink-2);
+  --line: var(--mc-line);
+  --line-strong: var(--mc-line-2);
+  --canvas: var(--mc-paper-3);
+  --canvas-deep: var(--mc-paper-2);
+  --paper: var(--mc-paper);
+  --amber: var(--mc-amber);
+  --amber-soft: var(--mc-amber-tint);
+  --amber-strong: var(--mc-amber);
+  --green: var(--mc-green);
+  --green-soft: var(--mc-green-tint);
+  --red: var(--mc-red);
+  --red-soft: var(--mc-red-tint);
+  --slate: var(--mc-ink-3);
+  --radius: 2px;
+  --shadow-sm: none;
+  --shadow-md: none;
+  color: var(--mc-ink);
+  font-family: var(--font-ui);
+}
+
+.report-page .container {
+  max-width: 1160px;
+}
+
+/* Toolbar: quiet, editorial, no app-chrome gradient */
+
+.report-page .report-toolbar {
+  padding: 4px 0 20px;
+}
+
+.report-page .back-link,
+.report-page .toolbar-case {
+  color: var(--mc-ink-3);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.03em;
+}
+
+.report-page .back-link:hover {
+  color: var(--mc-green);
+}
+
+.report-page .btn {
+  border-radius: 4px;
+  font-family: var(--font-ui);
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.report-page .btn-primary {
+  border-color: var(--mc-green);
+  background: var(--mc-green);
+  color: var(--mc-paper);
+}
+
+.report-page .btn-primary:hover:not(:disabled) {
+  border-color: var(--mc-green-deep);
+  background: var(--mc-green-deep);
+}
+
+.report-page .btn-ghost {
+  border-color: var(--mc-line-2);
+  background: var(--mc-paper);
+  color: var(--mc-ink-2);
+}
+
+.report-page .btn-ghost:hover:not(:disabled) {
+  border-color: var(--mc-green);
+  background: var(--mc-green-tint);
+  color: var(--mc-green);
+}
+
+/* ------------------------------------------------------------------ */
+/* 1. Verdict — Mingcha decision-brief lead                            */
+/* ------------------------------------------------------------------ */
+
+.report-page .verdict-banner {
+  --verdict: var(--mc-green);
+  --verdict-soft: var(--mc-green-tint);
+  --verdict-border: var(--mc-line);
+  position: relative;
+  display: grid;
+  grid-template-columns: 92px minmax(0, 1fr);
+  gap: 30px;
+  padding: 38px 40px 34px;
+  overflow: visible;
+  border: 1px solid var(--mc-line);
+  border-left: 5px solid var(--verdict);
+  border-radius: 2px;
+  background: var(--verdict-soft);
+  box-shadow: none;
+}
+
+.report-page .verdict-banner::after {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  bottom: 12px;
+  left: 12px;
+  border: 1px solid color-mix(in srgb, var(--verdict) 16%, transparent);
+  content: "";
+  pointer-events: none;
+}
+
+.report-page .verdict-banner.verdict-sign {
+  --verdict: var(--mc-green);
+  --verdict-soft: var(--mc-green-tint);
+  --verdict-border: var(--mc-line);
+}
+
+.report-page .verdict-banner.verdict-negotiate {
+  --verdict: var(--mc-amber);
+  --verdict-soft: var(--mc-amber-tint);
+  --verdict-border: var(--mc-line);
+}
+
+.report-page .verdict-banner.verdict-reject {
+  --verdict: var(--mc-red);
+  --verdict-soft: var(--mc-red-tint);
+  --verdict-border: var(--mc-line);
+}
+
+.report-page .verdict-seal {
+  position: relative;
+  z-index: 1;
+  width: 88px;
+  height: 88px;
+  border: 1px solid var(--verdict);
+  border-radius: 0;
+  outline: 1px solid color-mix(in srgb, var(--verdict) 34%, transparent);
+  outline-offset: -7px;
+  background: var(--mc-paper);
+  color: var(--verdict);
+  font-family: var(--font-display);
+  font-size: 42px;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.report-page .verdict-negotiate .verdict-seal {
+  color: var(--mc-amber);
+}
+
+.report-page .verdict-main {
+  position: relative;
+  z-index: 1;
+  min-width: 0;
+  padding-right: 76px;
+}
+
+.report-page .verdict-kicker {
+  gap: 12px;
+  color: var(--verdict);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+}
+
+.report-page .confidence-chip {
+  padding: 2px 8px;
+  border: 1px solid color-mix(in srgb, var(--verdict) 32%, transparent);
+  border-radius: 2px;
+  background: var(--mc-paper);
+  color: var(--verdict);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+.report-page .verdict-main h1 {
+  max-width: 760px;
+  margin: 12px 0 0;
+  color: var(--mc-ink);
+  font-family: var(--font-display);
+  font-size: clamp(29px, 3.3vw, 45px);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 1.32;
+  text-wrap: balance;
+}
+
+.report-page .verdict-caption {
+  max-width: 680px;
+  margin-top: 10px;
+  color: var(--mc-ink-2);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.report-page .verdict-counts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 15px;
+}
+
+.report-page .verdict-count {
+  padding: 2px 9px;
+  border: 1px solid currentColor;
+  border-radius: 2px;
+  background: var(--mc-paper);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  line-height: 1.7;
+}
+
+.report-page .verdict-count.count-high {
+  color: var(--mc-red);
+}
+
+.report-page .verdict-count.count-medium {
+  color: var(--mc-amber);
+}
+
+.report-page .verdict-count.count-low {
+  color: var(--mc-green);
+}
+
+.report-page .verdict-reasons {
+  gap: 10px;
+  margin-top: 22px;
+  counter-reset: verdict-reason;
+}
+
+.report-page .verdict-reasons li {
+  align-items: flex-start;
+  gap: 12px;
+  color: var(--mc-ink-2);
+  font-size: 13.5px;
+  line-height: 1.8;
+}
+
+.report-page .verdict-reasons li > span {
+  display: inline-grid;
+  flex: 0 0 26px;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  padding: 0;
+  border-radius: 50%;
+  background: var(--mc-paper);
+  color: var(--verdict);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+.report-page .verdict-conditions {
+  max-width: 720px;
+  margin-top: 22px;
+  padding: 14px 18px;
+  border: 0;
+  border-left: 3px solid var(--verdict);
+  border-radius: 0;
+  background: color-mix(in srgb, var(--mc-paper) 72%, transparent);
+}
+
+.report-page .verdict-conditions strong {
+  color: var(--verdict);
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+}
+
+.report-page .verdict-conditions ul {
+  gap: 4px 24px;
+  margin-top: 8px;
+}
+
+.report-page .verdict-conditions li {
+  color: var(--mc-ink-2);
+  font-size: 12.5px;
+  line-height: 1.75;
+}
+
+.report-page .verdict-conditions li::before {
+  top: 9px;
+  width: 3px;
+  height: 3px;
+  background: var(--verdict);
+}
+
+.report-page .verdict-mascot {
+  position: absolute;
+  top: 20px;
+  right: 24px;
+  z-index: 2;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  pointer-events: none;
+}
+
+.report-page .verdict-mascot .sub-xiacha {
+  color: var(--mc-green);
+  filter: drop-shadow(0 1px 0 color-mix(in srgb, var(--mc-ink) 6%, transparent));
+}
+
+/* ------------------------------------------------------------------ */
+/* Report meta — data strip between double rules                       */
+/* ------------------------------------------------------------------ */
+
+.report-page .report-meta {
+  margin-top: 18px;
+  overflow: visible;
+  border: 0;
+  border-top: 3px double var(--mc-line-2);
+  border-bottom: 1px solid var(--mc-line);
+  border-radius: 0;
+  background: transparent;
+}
+
+.report-page .meta-block {
+  padding: 14px 20px 14px 0;
+  border-right: 1px solid var(--mc-line);
+}
+
+.report-page .meta-block:first-child {
+  padding-left: 2px;
+}
+
+.report-page .meta-block:last-child {
+  border-right: 0;
+}
+
+.report-page .meta-block > span {
+  color: var(--mc-ink-3);
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.1em;
+}
+
+.report-page .meta-block strong {
+  margin-top: 4px;
+  color: var(--mc-ink);
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.report-page .demo-badge {
+  border-radius: 2px;
+  background: var(--mc-amber-tint);
+  color: var(--mc-amber);
+}
+
+/* ------------------------------------------------------------------ */
+/* Section shell — paper cards, double rules, green kicker             */
+/* ------------------------------------------------------------------ */
+
+.report-page .report-layout {
+  grid-template-columns: minmax(0, 1fr) 318px;
+  gap: 32px;
+  margin-top: 32px;
+}
+
+.report-page .report-main {
+  gap: 32px;
+}
+
+.report-page .panel,
+.report-page .report-section,
+.report-page .whatif-panel,
+.report-page .sheet-panel {
+  border: 1px solid var(--mc-line);
+  border-radius: 2px;
+  background: var(--mc-paper);
+  box-shadow: none;
+}
+
+.report-page .report-section,
+.report-page .whatif-panel {
+  padding: 32px 34px;
+}
+
+.report-page .eyebrow {
+  color: var(--mc-green);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+}
+
+.report-page .section-title-row {
+  align-items: flex-start;
+  gap: 24px;
+  margin-bottom: 24px;
+  padding-bottom: 18px;
+  border-bottom: 3px double var(--mc-line-2);
+}
+
+.report-page .section-title-row h2 {
+  gap: 12px;
+  margin-top: 7px;
+  color: var(--mc-ink);
+  font-family: var(--font-display);
+  font-size: clamp(26px, 2.6vw, 34px);
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  line-height: 1.28;
+}
+
+.report-page .section-sub {
+  max-width: 620px;
+  margin-top: 10px;
+  color: var(--mc-ink-2);
+  font-size: 12.5px;
+  line-height: 1.8;
+}
+
+.report-page .count-badge {
+  min-width: 30px;
+  height: 24px;
+  border-radius: 2px;
+  background: var(--mc-green-tint);
+  color: var(--mc-green);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.report-page .risk-filters {
+  gap: 0;
+  padding: 0;
+  border: 1px solid var(--mc-line);
+  border-radius: 2px;
+  background: var(--mc-paper-2);
+}
+
+.report-page .filter-chip {
+  padding: 6px 11px;
+  border-radius: 0;
+  color: var(--mc-ink-2);
+  font-size: 11.5px;
+}
+
+.report-page .filter-chip + .filter-chip {
+  border-left: 1px solid var(--mc-line);
+}
+
+.report-page .filter-chip:hover {
+  color: var(--mc-green);
+}
+
+.report-page .filter-chip.is-active {
+  background: var(--mc-green);
+  color: var(--mc-paper);
+  box-shadow: none;
+}
+
+.report-page .filter-chip.is-active span {
+  opacity: 0.72;
+}
+
+.report-page .risk-summary {
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.report-page .summary-pill {
+  padding: 3px 9px;
+  border-radius: 2px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+.report-page .summary-high {
+  background: var(--mc-red-tint);
+  color: var(--mc-red);
+}
+
+.report-page .summary-medium {
+  background: var(--mc-amber-tint);
+  color: var(--mc-amber);
+}
+
+.report-page .summary-low {
+  background: var(--mc-green-tint);
+  color: var(--mc-green);
+}
+
+.report-page .summary-note {
+  color: var(--mc-ink-3);
+  font-family: var(--font-mono);
+  font-size: 10px;
+}
+
+/* ------------------------------------------------------------------ */
+/* 2. Risk cards — numbered findings                                   */
+/* ------------------------------------------------------------------ */
+
+.report-page .risk-list {
+  gap: 14px;
+}
+
+.report-page .risk-card {
+  padding: 22px 24px 22px 22px;
+  border: 1px solid var(--mc-line);
+  border-left: 4px solid var(--mc-line-2);
+  border-radius: 2px;
+  background: var(--mc-paper);
+  box-shadow: none;
+}
+
+.report-page .risk-card.risk-high {
+  border-left-color: var(--mc-red);
+}
+
+.report-page .risk-card.risk-medium {
+  border-left-color: var(--mc-amber);
+}
+
+.report-page .risk-card.risk-low {
+  border-left-color: var(--mc-green);
+}
+
+.report-page .risk-card.is-mitigated {
+  background: var(--mc-paper-2);
+  opacity: 0.68;
+}
+
+.report-page .risk-head {
+  align-items: center;
+  gap: 10px;
+}
+
+.report-page .risk-index {
+  display: inline-grid;
+  flex: 0 0 28px;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--mc-green-tint);
+  color: var(--mc-green);
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0;
+  line-height: 1;
+}
+
+.report-page .risk-head h3 {
+  min-width: 180px;
+  color: var(--mc-ink);
+  font-size: 16.5px;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  line-height: 1.55;
+}
+
+.report-page .risk-head .chip {
+  border-radius: 2px;
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
+.report-page .risk-head .chip-high {
+  background: var(--mc-red-tint);
+  color: var(--mc-red);
+}
+
+.report-page .risk-head .chip-medium {
+  background: var(--mc-amber-tint);
+  color: var(--mc-amber);
+}
+
+.report-page .risk-head .chip-low {
+  background: var(--mc-green-tint);
+  color: var(--mc-green);
+}
+
+.report-page .risk-head .chip-mitigated {
+  background: transparent;
+  box-shadow: inset 0 0 0 1px var(--mc-green);
+  color: var(--mc-green);
+}
+
+.report-page .risk-confidence {
+  color: var(--mc-ink-3);
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.02em;
+}
+
+.report-page .risk-body {
+  margin-top: 14px;
+  padding-left: 38px;
+}
+
+.report-page .risk-block,
+.report-page .risk-suggestion {
+  grid-template-columns: 54px minmax(0, 1fr);
+  gap: 12px;
+}
+
+.report-page .risk-block p {
+  color: var(--mc-ink-2);
+  font-size: 14.5px;
+  line-height: 1.9;
+}
+
+.report-page .risk-label {
+  padding-top: 4px;
+  color: var(--mc-ink-3);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+}
+
+.report-page .risk-clause {
+  margin-top: 12px;
+  color: var(--mc-ink-2);
+  font-family: var(--font-document);
+  font-size: 13px;
+  font-style: italic;
+  line-height: 1.85;
+}
+
+.report-page .risk-clause .inline-link {
+  color: var(--mc-ink);
+  font-family: var(--font-document);
+  font-size: inherit;
+  font-style: italic;
+  text-decoration-color: var(--mc-line-2);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
+
+.report-page .risk-clause .inline-link:hover {
+  color: var(--mc-green);
+  text-decoration-color: var(--mc-green);
+}
+
+.report-page .risk-suggestion {
+  margin-top: 14px;
+  padding: 13px 16px;
+  border-left: 3px solid var(--mc-green);
+  border-radius: 0;
+  background: var(--mc-green-tint);
+}
+
+.report-page .risk-suggestion .risk-label {
+  color: var(--mc-green);
+  font-weight: 600;
+}
+
+.report-page .risk-suggestion p {
+  color: var(--mc-ink);
+  font-size: 13.5px;
+  line-height: 1.85;
+}
+
+.report-page .risk-no-law {
+  margin-top: 12px;
+  padding-top: 10px;
+  border-top: 1px dashed var(--mc-line-2);
+  color: var(--mc-ink-3);
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+}
+
+/* Law citation — Mingcha blockquote */
+
+.report-page .law-fold {
+  margin-top: 16px;
+  border-top: 1px solid var(--mc-line);
+}
+
+.report-page .law-fold summary {
+  gap: 8px;
+  padding-top: 12px;
+  color: var(--mc-green);
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.06em;
+}
+
+.report-page .law-fold summary::before {
+  color: var(--mc-green);
+  font-size: 13px;
+}
+
+.report-page .law-fold summary span {
+  color: var(--mc-ink-3);
+}
+
+.report-page .law-body {
+  padding: 0;
+}
+
+.report-page .law-body blockquote,
+.report-page blockquote.law-quote {
+  margin: 14px 0 0;
+  padding: 16px 18px;
+  border: 0;
+  border-left: 3px solid var(--mc-green);
+  border-radius: 0;
+  background: var(--mc-paper-2);
+  color: var(--mc-ink);
+  font-family: var(--font-document);
+  font-size: 15px;
+  line-height: 1.9;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.report-page .law-body a {
+  display: inline-block;
+  margin-top: 9px;
+  color: var(--mc-green);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.03em;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* ------------------------------------------------------------------ */
+/* 4. Clause document — document serif + lime marks                    */
+/* ------------------------------------------------------------------ */
+
+.report-page .clause-toolbar {
+  margin-bottom: 16px;
+}
+
+.report-page .legend span,
+.report-page .clause-count {
+  color: var(--mc-ink-3);
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.02em;
+}
+
+.report-page .legend-swatch {
+  width: 12px;
+  height: 8px;
+  border-radius: 0;
+  background: color-mix(in srgb, var(--mc-lime) 42%, transparent);
+}
+
+.report-page .swatch-high {
+  border: 0;
+  border-bottom: 2px solid var(--mc-red);
+}
+
+.report-page .swatch-medium {
+  border: 0;
+  border-bottom: 2px solid var(--mc-amber);
+}
+
+.report-page .swatch-low {
+  border: 0;
+  border-bottom: 2px solid var(--mc-green);
+}
+
+.report-page .clause-index {
+  margin-bottom: 18px;
+  padding: 14px 16px;
+  border: 1px solid var(--mc-line);
+  border-radius: 2px;
+  background: var(--mc-paper-2);
+}
+
+.report-page .clause-index-title {
+  margin-bottom: 10px;
+  color: var(--mc-green);
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+}
+
+.report-page .clause-index-list {
+  gap: 7px;
+}
+
+.report-page .clause-jump {
+  gap: 7px;
+  padding: 3px 10px 3px 3px;
+  border: 1px solid var(--mc-green);
+  border-radius: 999px;
+  background: var(--mc-paper);
+  color: var(--mc-green);
+  font-family: var(--font-ui);
+  font-size: 10.5px;
+}
+
+.report-page .clause-jump:hover {
+  background: var(--mc-green-tint);
+  border-color: var(--mc-green-deep);
+}
+
+.report-page .clause-jump .chip {
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 8.5px;
+  font-weight: 500;
+}
+
+.report-page .contract-scroll {
+  padding: 28px 30px;
+  border: 1px solid var(--mc-line);
+  border-radius: 2px;
+  background: var(--mc-paper-2);
+}
+
+.report-page .contract-doc {
+  color: var(--mc-ink);
+  font-family: var(--font-document);
+  font-size: 15px;
+  letter-spacing: 0.01em;
+  line-height: 2.05;
+}
+
+.report-page .clause-mark {
+  margin: 0 -1px;
+  padding: 1px 1px;
+  border-radius: 0;
+  background: transparent;
+  scroll-margin-top: 90px;
+}
+
+.report-page .clause-mark.clause-high {
+  border-bottom: 2px solid var(--mc-red);
+  background: color-mix(in srgb, var(--mc-lime) 48%, transparent);
+}
+
+.report-page .clause-mark.clause-medium {
+  border-bottom: 2px solid var(--mc-amber);
+  background: color-mix(in srgb, var(--mc-lime) 38%, transparent);
+}
+
+.report-page .clause-mark.clause-low {
+  border-bottom: 2px solid var(--mc-green);
+  background: color-mix(in srgb, var(--mc-lime) 30%, transparent);
+}
+
+.report-page .clause-mark.is-flash {
+  outline: 2px solid var(--mc-green);
+  outline-offset: 1px;
+  background: color-mix(in srgb, var(--mc-lime) 70%, transparent);
+}
+
+/* ------------------------------------------------------------------ */
+/* 5. What-if — paper scenarios, deep-green comparison block           */
+/* ------------------------------------------------------------------ */
+
+.report-page .whatif-layout {
+  grid-template-columns: minmax(0, 1fr) 300px;
+  gap: 24px;
+}
+
+.report-page .scenario-list {
+  gap: 8px;
+}
+
+.report-page .scenario {
+  gap: 12px;
+  padding: 14px 16px;
+  border: 1px solid var(--mc-line);
+  border-left: 3px solid transparent;
+  border-radius: 2px;
+  background: var(--mc-paper-2);
+}
+
+.report-page .scenario:hover {
+  border-color: var(--mc-line-2);
+  border-left-color: var(--mc-green);
+}
+
+.report-page .scenario:focus-within {
+  outline: 2px solid var(--mc-green);
+  outline-offset: 1px;
+}
+
+.report-page .scenario.is-active {
+  border-color: var(--mc-green);
+  border-left-color: var(--mc-green);
+  background: var(--mc-green-tint);
+}
+
+.report-page .scenario-check {
+  width: 19px;
+  height: 19px;
+  border: 1px solid var(--mc-line-2);
+  border-radius: 2px;
+  background: var(--mc-paper);
+  color: transparent;
+  font-family: var(--font-mono);
+  font-size: 11px;
+}
+
+.report-page .scenario.is-active .scenario-check {
+  border-color: var(--mc-green);
+  background: var(--mc-lime);
+  color: var(--mc-green-deep);
+}
+
+.report-page .scenario-copy strong {
+  color: var(--mc-ink);
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.6;
+}
+
+.report-page .scenario-copy small {
+  color: var(--mc-ink-2);
+  font-size: 11.5px;
+  line-height: 1.7;
+}
+
+.report-page .scenario-copy em {
+  color: var(--mc-green);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.04em;
+}
+
+.report-page .sim-card {
+  padding: 24px;
+  border-radius: 2px;
+  background: var(--mc-green-deep);
+  color: var(--mc-paper);
+}
+
+.report-page .sim-card.is-flipped {
+  box-shadow: inset 0 0 0 1px var(--mc-lime);
+}
+
+.report-page .sim-eyebrow {
+  color: color-mix(in srgb, var(--mc-lime) 82%, var(--mc-paper));
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.16em;
+}
+
+.report-page .sim-word {
+  font-family: var(--font-display);
+  font-size: 46px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+.report-page .sim-sign .sim-word {
+  color: var(--mc-lime);
+}
+
+.report-page .sim-negotiate .sim-word {
+  color: var(--mc-peach);
+}
+
+.report-page .sim-reject .sim-word {
+  color: var(--mc-paper);
+}
+
+.report-page .sim-verdict strong {
+  color: var(--mc-paper);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.report-page .sim-verdict small {
+  color: color-mix(in srgb, var(--mc-paper) 62%, transparent);
+  font-size: 10.5px;
+}
+
+.report-page .sim-compare {
+  color: color-mix(in srgb, var(--mc-paper) 60%, transparent);
+  font-family: var(--font-mono);
+  font-size: 10px;
+}
+
+.report-page .sim-compare span {
+  color: var(--mc-lime);
+}
+
+.report-page .sim-stats {
+  margin-top: 18px;
+  padding-top: 15px;
+  border-top: 1px solid color-mix(in srgb, var(--mc-paper) 22%, transparent);
+}
+
+.report-page .sim-stats dt {
+  color: color-mix(in srgb, var(--mc-paper) 58%, transparent);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.03em;
+}
+
+.report-page .sim-stats dd {
+  color: var(--mc-paper);
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.report-page .exposure-track {
+  border-radius: 0;
+  background: color-mix(in srgb, var(--mc-paper) 18%, transparent);
+}
+
+.report-page .exposure-track span {
+  border-radius: 0;
+  background: var(--mc-lime);
+}
+
+.report-page .sim-note {
+  color: color-mix(in srgb, var(--mc-paper) 54%, transparent);
+  font-size: 9.5px;
+}
+
+/* ------------------------------------------------------------------ */
+/* 6. Negotiation sheet — one-page editorial list                      */
+/* ------------------------------------------------------------------ */
+
+.report-page .sheet-panel {
+  padding: 38px 38px 30px;
+  border-color: var(--mc-line);
+  background: var(--mc-paper);
+}
+
+.report-page .sheet-header {
+  gap: 24px;
+  padding-bottom: 20px;
+  border-bottom: 3px double var(--mc-ink);
+}
+
+.report-page .sheet-kicker {
+  color: var(--mc-green);
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+}
+
+.report-page .sheet-header h2 {
+  margin-top: 7px;
+  color: var(--mc-ink);
+  font-family: var(--font-display);
+  font-size: clamp(30px, 3vw, 40px);
+  font-weight: 500;
+  letter-spacing: -0.03em;
+  line-height: 1.24;
+}
+
+.report-page .sheet-header p {
+  margin-top: 7px;
+  color: var(--mc-ink-2);
+  font-family: var(--font-document);
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.report-page .sheet-meta strong {
+  color: var(--mc-ink);
+  font-family: var(--font-document);
+  font-size: 13px;
+}
+
+.report-page .sheet-meta span {
+  color: var(--mc-ink-3);
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+}
+
+.report-page .sheet-list {
+  margin-top: 4px;
+}
+
+.report-page .sheet-list li {
+  grid-template-columns: 44px minmax(0, 1fr);
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--mc-line);
+}
+
+.report-page .sheet-num {
+  padding-top: 2px;
+  color: var(--mc-green);
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+.report-page .sheet-body {
+  min-width: 0;
+}
+
+.report-page .sheet-priority {
+  display: inline-block;
+  margin-bottom: 5px;
+  padding: 1px 7px;
+  border: 1px solid currentColor;
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  line-height: 1.6;
+}
+
+.report-page .sheet-list p {
+  color: var(--mc-ink);
+  font-size: 14px;
+  line-height: 1.85;
+}
+
+.report-page .sheet-list li.priority-p0 .sheet-num,
+.report-page .sheet-list li.priority-p0 .sheet-priority {
+  color: var(--mc-red);
+}
+
+.report-page .sheet-list li.priority-p0 .sheet-priority {
+  background: var(--mc-red-tint);
+}
+
+.report-page .sheet-list li.priority-p1 .sheet-num,
+.report-page .sheet-list li.priority-p1 .sheet-priority {
+  color: var(--mc-amber);
+}
+
+.report-page .sheet-list li.priority-p1 .sheet-priority {
+  background: var(--mc-amber-tint);
+}
+
+.report-page .sheet-list li.priority-p2 .sheet-num,
+.report-page .sheet-list li.priority-p2 .sheet-priority {
+  color: var(--mc-green);
+}
+
+.report-page .sheet-list li.priority-p2 .sheet-priority {
+  background: var(--mc-green-tint);
+}
+
+.report-page .sheet-footer {
+  margin-top: 20px;
+  padding-top: 12px;
+  border-top: 1px solid var(--mc-line);
+  color: var(--mc-ink-3);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+}
+
+/* ------------------------------------------------------------------ */
+/* 3./7. Aside — paper cards, green kickers, hairline facts            */
+/* ------------------------------------------------------------------ */
+
+.report-page .report-aside {
+  gap: 20px;
+}
+
+.report-page .company-panel,
+.report-page .source-panel,
+.report-page .disclaimer-panel {
+  padding: 24px;
+  border-radius: 2px;
+  box-shadow: none;
+}
+
+.report-page .report-aside .panel-head {
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--mc-line);
+}
+
+.report-page .report-aside .panel-head h2 {
+  color: var(--mc-green);
+  font-family: var(--font-ui);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+}
+
+.report-page .report-aside .panel-head > span {
+  color: var(--mc-ink-3);
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+}
+
+.report-page .company-name {
+  color: var(--mc-ink);
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  line-height: 1.45;
+}
+
+.report-page .company-alias {
+  margin-top: 4px;
+  color: var(--mc-ink-3);
+  font-family: var(--font-document);
+  font-size: 11px;
+  font-style: italic;
+}
+
+.report-page .flag-list {
+  gap: 6px;
+  margin-top: 14px;
+}
+
+.report-page .flag-chip {
+  padding: 3px 8px;
+  border: 0;
+  border-radius: 2px;
+  background: var(--mc-red-tint);
+  color: var(--mc-red);
+  font-size: 10px;
+  line-height: 1.5;
+}
+
+.report-page .fact-list {
+  gap: 0;
+  margin-top: 16px;
+}
+
+.report-page .fact-item {
+  grid-template-columns: 7px minmax(0, 1fr);
+  gap: 10px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--mc-line);
+}
+
+.report-page .fact-item:last-child {
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+
+.report-page .fact-dot {
+  width: 5px;
+  height: 5px;
+  margin-top: 8px;
+  border-radius: 0;
+  background: var(--mc-line-2);
+}
+
+.report-page .fact-dot.severity-high {
+  background: var(--mc-red);
+}
+
+.report-page .fact-dot.severity-medium {
+  background: var(--mc-amber);
+}
+
+.report-page .fact-dot.severity-low {
+  background: var(--mc-green);
+}
+
+.report-page .fact-dot.severity-info {
+  background: var(--mc-line-2);
+}
+
+.report-page .fact-item dt {
+  color: var(--mc-ink-3);
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.04em;
+}
+
+.report-page .fact-item dd {
+  margin-top: 2px;
+  color: var(--mc-ink-2);
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.report-page .fact-meta {
+  color: var(--mc-ink-3);
+  font-family: var(--font-mono);
+  font-size: 9px;
+}
+
+.report-page .fact-meta a {
+  color: var(--mc-green);
+}
+
+.report-page .source-list li {
+  padding: 9px 0;
+  border-bottom: 1px solid var(--mc-line);
+  color: var(--mc-ink-2);
+  font-size: 11px;
+  line-height: 1.6;
+}
+
+.report-page .source-list a {
+  color: var(--mc-green);
+}
+
+.report-page .source-list a:hover {
+  color: var(--mc-green-deep);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.report-page .source-note {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--mc-line);
+  color: var(--mc-ink-3);
+  font-family: var(--font-mono);
+  font-size: 9px;
+  line-height: 1.7;
+}
+
+.report-page .disclaimer-panel {
+  border-left: 3px solid var(--mc-amber);
+  background: var(--mc-paper-2);
+}
+
+.report-page .disclaimer-panel h2 {
+  color: var(--mc-amber);
+  font-family: var(--font-ui);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+}
+
+.report-page .disclaimer-panel p {
+  color: var(--mc-ink-2);
+  font-size: 10.5px;
+  line-height: 1.85;
+}
+
+.report-page .empty-note {
+  border: 1px dashed var(--mc-line-2);
+  border-radius: 2px;
+  color: var(--mc-ink-2);
+  font-size: 12.5px;
+}
+
+.report-page .report-footer {
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 3px double var(--mc-line-2);
+  color: var(--mc-ink-3);
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.03em;
+}
+
+.report-page .report-footer span {
+  color: var(--mc-ink);
+  letter-spacing: 0.1em;
+}
+
+/* ------------------------------------------------------------------ */
+/* Responsive (styles.css media rules are overridden by load order)     */
+/* ------------------------------------------------------------------ */
+
+@media (max-width: 1024px) {
+  .report-page .report-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .report-page .report-aside {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+  }
+
+  .report-page .report-aside .disclaimer-panel,
+  .report-page .report-aside .aside-actions {
+    grid-column: 1 / -1;
+  }
+
+  .report-page .whatif-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .report-page .sim-card {
+    max-width: 460px;
+  }
+}
+
+@media (max-width: 960px) {
+  .report-page .report-meta {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .report-page .meta-block:nth-child(1),
+  .report-page .meta-block:nth-child(2) {
+    border-bottom: 1px solid var(--mc-line);
+  }
+
+  .report-page .meta-block:nth-child(2) {
+    border-right: 0;
+  }
+}
+
+@media (max-width: 900px) {
+  .report-page .verdict-main {
+    padding-right: 0;
+  }
+
+  .report-page .verdict-mascot {
+    display: none;
+  }
+}
+
+@media (max-width: 760px) {
+  .report-page .report-toolbar {
+    padding-top: 0;
+  }
+
+  .report-page .verdict-banner {
+    grid-template-columns: 58px minmax(0, 1fr);
+    gap: 16px;
+    padding: 22px 20px;
+  }
+
+  .report-page .verdict-banner::after {
+    display: none;
+  }
+
+  .report-page .verdict-seal {
+    width: 56px;
+    height: 56px;
+    font-size: 27px;
+  }
+
+  .report-page .verdict-main h1 {
+    margin-top: 9px;
+    font-size: 25px;
+    line-height: 1.4;
+  }
+
+  .report-page .verdict-caption,
+  .report-page .verdict-reasons li {
+    font-size: 12.5px;
+  }
+
+  .report-page .verdict-reasons li > span {
+    flex-basis: 22px;
+    width: 22px;
+    height: 22px;
+    font-size: 9px;
+  }
+
+  .report-page .verdict-conditions ul {
+    display: block;
+  }
+
+  .report-page .verdict-conditions li + li {
+    margin-top: 5px;
+  }
+
+  .report-page .report-meta {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .report-page .meta-block {
+    padding: 11px 12px 11px 0;
+  }
+
+  .report-page .meta-block strong {
+    overflow: visible;
+    font-size: 11.5px;
+    line-height: 1.45;
+    text-overflow: clip;
+    white-space: normal;
+  }
+
+  .report-page .report-layout {
+    margin-top: 22px;
+  }
+
+  .report-page .report-section,
+  .report-page .whatif-panel {
+    padding: 20px;
+  }
+
+  .report-page .section-title-row {
+    gap: 16px;
+  }
+
+  .report-page .section-title-row h2 {
+    font-size: 23px;
+  }
+
+  .report-page .risk-card {
+    padding: 16px 16px 16px 15px;
+  }
+
+  .report-page .risk-body {
+    padding-left: 0;
+  }
+
+  .report-page .risk-head {
+    align-items: flex-start;
+  }
+
+  .report-page .risk-head h3 {
+    flex: 1 1 100%;
+    min-width: 0;
+    order: 3;
+    font-size: 15px;
+  }
+
+  .report-page .risk-confidence {
+    margin-left: auto;
+  }
+
+  .report-page .risk-block,
+  .report-page .risk-suggestion {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 3px;
+  }
+
+  .report-page .risk-label {
+    padding-top: 0;
+  }
+
+  .report-page .contract-scroll {
+    max-height: 380px;
+    padding: 16px;
+  }
+
+  .report-page .contract-doc {
+    font-size: 13.5px;
+  }
+
+  .report-page .sheet-panel {
+    padding: 22px;
+  }
+
+  .report-page .sheet-header {
+    flex-direction: column;
+  }
+
+  .report-page .sheet-meta {
+    text-align: left;
+  }
+
+  .report-page .sheet-header h2 {
+    font-size: 27px;
+  }
+
+  .report-page .sheet-list li {
+    grid-template-columns: 34px minmax(0, 1fr);
+    gap: 12px;
+    padding: 13px 0;
+  }
+
+  .report-page .report-aside {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .report-page .report-aside .disclaimer-panel,
+  .report-page .report-aside .aside-actions {
+    grid-column: auto;
+  }
+
+  .report-page .report-footer {
+    flex-direction: column;
+  }
+
+  .report-page .report-footer p {
+    text-align: left;
+  }
+
+  .report-page .print-head {
+    border-bottom: 3px double var(--mc-ink);
+  }
+}
+
+@media (max-width: 420px) {
+  .report-page .risk-head .chip {
+    display: none;
+  }
+
+  .report-page .sheet-priority {
+    margin-bottom: 4px;
+  }
+}
+
+/* ------------------------------------------------------------------ */
+/* Print: A4 paper dossier                                             */
+/* ------------------------------------------------------------------ */
+
+@media print {
+  @page {
+    size: A4;
+    margin: 13mm 13mm 14mm;
+  }
+
+  .report-page {
+    background: var(--mc-paper) !important;
+    color: var(--mc-ink);
+    font-size: 10pt;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .report-page .no-print,
+  .report-page .report-toolbar,
+  .report-page .aside-actions,
+  .report-page .risk-filters,
+  .report-page .verdict-mascot {
+    display: none !important;
+  }
+
+  .report-page .container {
+    width: auto !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .report-page .print-head {
+    display: flex !important;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 3px double var(--mc-ink);
+    color: var(--mc-ink-3);
+    font-family: var(--font-mono);
+    font-size: 8pt;
+  }
+
+  .report-page .print-head strong {
+    margin-right: 8px;
+    color: var(--mc-ink);
+    font-family: var(--font-display);
+    font-size: 13pt;
+    font-weight: 500;
+  }
+
+  .report-page .print-cover-note {
+    margin-top: 10px;
+    color: var(--mc-ink-2);
+    font-family: var(--font-document);
+    font-size: 9pt;
+    line-height: 1.7;
+  }
+
+  .report-page .verdict-banner {
+    grid-template-columns: 70px minmax(0, 1fr);
+    gap: 18px;
+    padding: 18px 20px;
+    border-left-width: 5px;
+    border-radius: 0;
+    box-shadow: none;
+    break-inside: avoid;
+  }
+
+  .report-page .verdict-banner::after {
+    display: none;
+  }
+
+  .report-page .verdict-seal {
+    width: 64px;
+    height: 64px;
+    font-size: 22pt;
+    white-space: nowrap;
+  }
+
+  .report-page .verdict-main {
+    padding-right: 0;
+  }
+
+  .report-page .verdict-main h1 {
+    margin-top: 6px;
+    font-size: 20pt;
+    line-height: 1.34;
+  }
+
+  .report-page .verdict-caption {
+    font-size: 9pt;
+  }
+
+  .report-page .verdict-counts {
+    gap: 5px;
+    margin-top: 8px;
+  }
+
+  .report-page .verdict-count {
+    padding: 1px 7px;
+    font-size: 7.5pt;
+  }
+
+  .report-page .verdict-reasons {
+    margin-top: 10px;
+  }
+
+  .report-page .verdict-reasons li,
+  .report-page .verdict-conditions li {
+    font-size: 8.8pt;
+    line-height: 1.7;
+  }
+
+  .report-page .verdict-reasons li > span {
+    flex-basis: 18px;
+    width: 18px;
+    height: 18px;
+    font-size: 7.5pt;
+  }
+
+  .report-page .verdict-conditions {
+    margin-top: 10px;
+    padding: 8px 12px;
+    background: var(--mc-paper);
+  }
+
+  .report-page .report-meta {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    margin-top: 10px;
+    break-inside: avoid;
+  }
+
+  .report-page .meta-block {
+    padding: 7px 10px 7px 0;
+    border-right: 1px solid var(--mc-line);
+    border-bottom: 0;
+  }
+
+  .report-page .meta-block:nth-child(2) {
+    border-right: 1px solid var(--mc-line);
+  }
+
+  .report-page .meta-block:nth-child(1),
+  .report-page .meta-block:nth-child(2) {
+    border-bottom: 0;
+  }
+
+  .report-page .meta-block:last-child {
+    border-right: 0;
+  }
+
+  .report-page .meta-block > span {
+    font-size: 7pt;
+  }
+
+  .report-page .meta-block strong {
+    font-size: 9pt;
+  }
+
+  .report-page .report-layout {
+    display: block;
+    margin-top: 12px;
+  }
+
+  .report-page .report-main {
+    display: block;
+  }
+
+  .report-page .report-main > * {
+    margin-bottom: 12px;
+  }
+
+  .report-page #risks {
+    break-before: page;
+  }
+
+  .report-page .report-section,
+  .report-page .whatif-panel {
+    padding: 14px 16px;
+  }
+
+  .report-page .section-title-row {
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+  }
+
+  .report-page .section-title-row h2 {
+    font-size: 18pt;
+  }
+
+  .report-page .section-sub {
+    margin-top: 4px;
+    font-size: 8pt;
+  }
+
+  .report-page .risk-summary {
+    margin-bottom: 8px;
+  }
+
+  .report-page .risk-list {
+    gap: 7px;
+  }
+
+  .report-page .risk-card {
+    margin-bottom: 7px;
+    padding: 10px 12px 10px 11px;
+    border-radius: 0;
+    break-inside: avoid;
+  }
+
+  .report-page .risk-head h3 {
+    font-size: 10.5pt;
+  }
+
+  .report-page .risk-index {
+    flex-basis: 20px;
+    width: 20px;
+    height: 20px;
+    font-size: 7.5pt;
+  }
+
+  .report-page .risk-body {
+    margin-top: 6px;
+    padding-left: 30px;
+  }
+
+  .report-page .risk-block p,
+  .report-page .risk-suggestion p {
+    font-size: 8.8pt;
+    line-height: 1.7;
+  }
+
+  .report-page .risk-suggestion {
+    margin-top: 7px;
+    padding: 7px 10px;
+  }
+
+  .report-page .risk-clause {
+    margin-top: 5px;
+    font-size: 8.5pt;
+  }
+
+  .report-page .law-body blockquote,
+  .report-page blockquote.law-quote {
+    margin-top: 6px;
+    padding: 8px 12px;
+    font-size: 8.8pt;
+    line-height: 1.75;
+    break-inside: avoid;
+  }
+
+  .report-page .law-fold {
+    break-inside: avoid;
+  }
+
+  .report-page .law-fold summary {
+    cursor: default;
+    padding-top: 7px;
+  }
+
+  .report-page .contract-scroll {
+    max-height: none !important;
+    overflow: visible !important;
+    padding: 0;
+    border: 0;
+    background: var(--mc-paper);
+  }
+
+  .report-page .contract-doc {
+    font-size: 9.2pt;
+    line-height: 1.8;
+  }
+
+  .report-page .clause-index {
+    padding: 8px 10px;
+    background: var(--mc-paper-2);
+    break-inside: avoid;
+  }
+
+  .report-page .clause-mark.clause-high,
+  .report-page .clause-mark.clause-medium,
+  .report-page .clause-mark.clause-low {
+    border-bottom: 1px solid var(--mc-ink-3);
+  }
+
+  .report-page .clause-mark.is-flash {
+    outline: none;
+  }
+
+  .report-page .whatif-layout {
+    display: block;
+  }
+
+  .report-page .scenario-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 5px;
+    margin-bottom: 8px;
+  }
+
+  .report-page .scenario {
+    padding: 7px 9px;
+    break-inside: avoid;
+  }
+
+  .report-page .scenario-copy small,
+  .report-page .scenario-copy em {
+    display: none;
+  }
+
+  .report-page .sim-card {
+    max-width: none;
+    padding: 10px 12px;
+    break-inside: avoid;
+  }
+
+  .report-page .sim-word {
+    font-size: 26pt;
+  }
+
+  .report-page .report-aside {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 8px;
+    margin-top: 8px;
+  }
+
+  .report-page .report-aside .disclaimer-panel {
+    grid-column: 1 / -1;
+  }
+
+  .report-page .company-panel,
+  .report-page .source-panel {
+    padding: 10px 12px;
+    break-inside: avoid;
+  }
+
+  .report-page .company-name {
+    font-size: 13pt;
+  }
+
+  .report-page .sheet-panel {
+    padding: 14px 16px;
+    break-before: page;
+    border: 1px solid var(--mc-line);
+    background: var(--mc-paper);
+  }
+
+  .report-page .sheet-header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 16px;
+    padding-bottom: 10px;
+  }
+
+  .report-page .sheet-meta {
+    margin-left: auto;
+    text-align: right;
+  }
+
+  .report-page .sheet-header h2 {
+    font-size: 20pt;
+  }
+
+  .report-page .sheet-list li {
+    padding: 8px 0;
+    break-inside: avoid;
+  }
+
+  .report-page .sheet-list p {
+    font-size: 8.8pt;
+    line-height: 1.65;
+  }
+
+  .report-page .sheet-footer {
+    margin-top: 10px;
+    padding-top: 7px;
+  }
+
+  .report-page .report-footer {
+    margin-top: 14px;
+    padding-top: 8px;
+    break-inside: avoid;
+  }
+
+  .report-page a {
+    color: var(--mc-ink) !important;
+    text-decoration: none;
+  }
+}

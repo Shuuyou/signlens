@@ -1,0 +1,72 @@
+/* Mingcha visual language, ported to SignLens.
+   Source of truth: Mingcha frontend/src/design/tokens.css (theme-report). */
+
+@font-face {
+  font-family: "Mingcha Display";
+  src: url("/fonts/smiley-sans-v2.0.1.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+:root {
+  --font-display: "Mingcha Display", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --font-ui: "PingFang SC", "Microsoft YaHei", "Noto Sans SC", sans-serif;
+  --font-document: "Songti SC", "STSong", "SimSun", "Noto Serif SC", serif;
+  --font-sans: var(--font-ui);
+  --font-doc: var(--font-document);
+  --font-mono: "SFMono-Regular", "Cascadia Code", "Consolas", monospace;
+
+  --mc-paper: #ffffff;
+  --mc-paper-2: #faf9f5;
+  --mc-paper-3: #f0f0e8;
+  --mc-ink: #24261f;
+  --mc-ink-2: #64675c;
+  --mc-ink-3: #74786b;
+  --mc-line: #e4e5db;
+  --mc-line-2: #ccd0bf;
+  --mc-lime: #d5ed83;
+  --mc-peach: #f4c7ab;
+  --mc-lilac: #dcd5f2;
+  --mc-sky: #c6dfe6;
+  --mc-green: #286544;
+  --mc-green-deep: #204d35;
+  --mc-green-tint: #f0f5e6;
+  --mc-red: #c0392b;
+  --mc-red-tint: #fdf1ef;
+  --mc-amber: #a8721c;
+  --mc-amber-tint: #fdf6e9;
+  --mc-radius-card: 16px;
+  --mc-radius-panel: 20px;
+  --mc-shadow-1: 0 1px 2px rgb(33 31 26 / 0.06);
+  --mc-shadow-2: 0 4px 18px rgb(33 31 26 / 0.1);
+  --mc-display: clamp(1.9rem, 1.4rem + 1.6vw, 3rem);
+  --mc-title: 1.5rem;
+  --mc-section: 1.25rem;
+  --mc-body: 0.9375rem;
+  --mc-reading: 1rem;
+  --mc-label: 0.8125rem;
+  --mc-caption: 0.75rem;
+  --mc-lh-body: 1.75;
+  --mc-lh-reading: 1.9;
+
+  /* SignLens aliases: override the dark SaaS palette with warm paper. */
+  --ink: var(--mc-ink);
+  --muted: var(--mc-ink-2);
+  --canvas: var(--mc-paper-3);
+  --canvas-deep: var(--mc-paper-2);
+  --paper: var(--mc-paper);
+  --line: var(--mc-line);
+  --line-strong: var(--mc-line-2);
+  --amber: var(--mc-amber);
+  --amber-soft: var(--mc-amber-tint);
+  --amber-strong: #8a5a12;
+  --green: var(--mc-green);
+  --green-soft: var(--mc-green-tint);
+  --red: var(--mc-red);
+  --red-soft: var(--mc-red-tint);
+  --slate: var(--mc-ink-3);
+  --radius: var(--mc-radius-card);
+  --shadow-sm: var(--mc-shadow-1);
+  --shadow-md: var(--mc-shadow-2);
+}
