@@ -351,6 +351,7 @@ export default function BriefView({ report, onEdit, onRestart }: BriefViewProps)
           </p>
         </section>
 
+        {scenarios.length > 0 && (
         <section id="actions" className="bf-section">
           <header className="bf-section-head">
             <div>
@@ -415,6 +416,7 @@ export default function BriefView({ report, onEdit, onRestart }: BriefViewProps)
             </p>
           )}
         </section>
+        )}
 
         <section id="risks" className="bf-section">
           <header className="bf-section-head">
