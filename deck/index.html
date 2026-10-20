@@ -443,7 +443,7 @@ table.cmp tr.us td:first-child::before{content:"● ";font-size:8px;vertical-ali
       <div class="cc-head"><span>体检报告 / 供应商采购</span><span class="cc-demo">DEMO</span></div>
       <div class="cc-verdict">
         <div class="cc-big">不签</div>
-        <small>置信度 90% · 演示数据已脱敏</small>
+        <small>演示数据已脱敏</small>
       </div>
       <div class="cc-rows">
         <div class="cc-row"><span>9 条高风险条款</span><b>预付款 30%</b></div>
@@ -591,7 +591,7 @@ table.cmp tr.us td:first-child::before{content:"● ";font-size:8px;vertical-ali
       <div>
         <h3>也不缺</h3>
         <div class="who">通用大模型 · 法律科普号 · 合同模板站</div>
-        <p class="ask">回答：<b>一般情况该怎么办。</b><br><span class="gap">能读、能写、能给建议。但不会指到第几条，不给置信度，也不为这句话负责。</span></p>
+        <p class="ask">回答：<b>一般情况该怎么办。</b><br><span class="gap">能读、能写、能给建议。但不会指到第几条，也不为这句话负责。</span></p>
       </div>
       <div class="last">
         <h3>空着的是</h3>
@@ -662,7 +662,7 @@ table.cmp tr.us td:first-child::before{content:"● ";font-size:8px;vertical-ali
         <h3>给结论和改法</h3>
         <ul>
           <li><b>40 条</b>硬规则 × <b>8 部</b>法律 <b>30 组</b>法条</li>
-          <li>输出：签 / 谈 / 不签 + 置信度 + 每个风险的「为什么、法条、改法」</li>
+          <li>输出：签 / 谈 / 不签 + 每个风险的「为什么、法条、改法」</li>
           <li>谈判单 P0/P1 共 8 条，可打印成一页带走</li>
         </ul>
       </div>
@@ -679,7 +679,7 @@ table.cmp tr.us td:first-child::before{content:"● ";font-size:8px;vertical-ali
       <div class="io-arrow">→</div>
       <div class="io-card out">
         <div class="lbl">输出</div>
-        <div class="io-row"><b>结论</b><span>不签 · 置信度 90%</span></div>
+        <div class="io-row"><b>结论</b><span>不签 · 9 高 / 3 中</span></div>
         <div class="io-row"><b>风险</b><span>12 条（9 高 / 3 中），每条带改法</span></div>
         <div class="io-row"><b>主体</b><span>5 项事实 · 4 个来源 · 带检索时间</span></div>
         <div class="io-row"><b>交付物</b><span>谈判单 8 条（P0 / P1）· 可打印 PDF</span></div>
@@ -754,7 +754,7 @@ table.cmp tr.us td:first-child::before{content:"● ";font-size:8px;vertical-ali
         <div class="link">
           <div class="rail"><span>结论<b>改法</b></span></div>
           <div class="body">
-            <div class="sugg">高风险 · 规则置信度 90% → 压到 30% 以内；优先改「交付 / 验收后付款」。必须预付时：对公账户、履约担保或预付款保函，并写明退款路径与时限。</div>
+            <div class="sugg">高风险 · 压到 30% 以内；优先改「交付 / 验收后付款」。必须预付时：对公账户、履约担保或预付款保函，并写明退款路径与时限。</div>
           </div>
         </div>
         <div class="link">
@@ -769,7 +769,7 @@ table.cmp tr.us td:first-child::before{content:"● ";font-size:8px;vertical-ali
         <ul class="hard">
           <li><b>可回指</b><span>结论落到条款 ID 与字符偏移量，不是「合同里好像有写」。</span></li>
           <li><b>可查证</b><span>法条带版本与 source_url，主体事实带 retrieved_at。</span></li>
-          <li><b>可反驳</b><span>每条风险带置信度；改一个事实，结论必须跟着改，否则报告自相矛盾。</span></li>
+          <li><b>可反驳</b><span>勾掉一项谈判条件，结论和风险当场跟着改，否则报告自相矛盾。</span></li>
           <li><b>可执行</b><span>输出落到一页谈判单：P0 / P1 分级、能打印、能直接带去见对方。</span></li>
         </ul>
         <div class="verdict-chip">报告首页写明：不构成法律意见</div>
@@ -778,7 +778,7 @@ table.cmp tr.us td:first-child::before{content:"● ";font-size:8px;vertical-ali
     </div>
 
     <div class="foot-notes">
-      <div class="limit"><b>一条边界</b>模型可以帮我们找措辞，但风险等级、置信度、法条引用必须来自可审的规则。模型改坏了哪一条，测试会红。</div>
+      <div class="limit"><b>一条边界</b>模型可以帮我们找措辞，但风险等级、法条引用必须来自可审的规则。模型改坏了哪一条，测试会红。</div>
 
       <div class="more">
         <div class="h">同一份合同，另外三条</div>
@@ -831,7 +831,7 @@ table.cmp tr.us td:first-child::before{content:"● ";font-size:8px;vertical-ali
 
       <div class="wi-panel">
         <div class="wi-label">当前结论</div>
-        <div class="wi-verdict"><div class="wi-big">不签</div><span>建议不签 · 置信度 90%</span></div>
+        <div class="wi-verdict"><div class="wi-big">不签</div><span>建议不签 · 9 条高风险</span></div>
         <div class="wi-table">
           <div class="wi-row"><span>剩余高风险</span><b>9</b></div>
           <div class="wi-row"><span>剩余中风险</span><b>3</b></div>
@@ -978,7 +978,7 @@ table.cmp tr.us td:first-child::before{content:"● ";font-size:8px;vertical-ali
     </div>
 
     <div class="price-note">
-      <b>定价纪律：</b>99 / 199 / 299 是假设价，还没做过价格测试；基地订阅目前只有 2 个在谈、没有成交，标注「设计伙伴进行中」。
+      <b>定价纪律：</b>99 / 199 / 299 是假设价，还没做过价格测试；基地订阅目前只是设想，没有成交。
       在对 20 个真实付费用户复过盘之前，我们不对外宣称转化率与毛利。
     </div>
   </div>
@@ -1062,15 +1062,15 @@ table.cmp tr.us td:first-child::before{content:"● ";font-size:8px;vertical-ali
   <div class="body">
     <div class="team-wrap">
       <div class="tm">
-        <div class="block-title">团队 · 4 人</div>
+        <div class="block-title">团队 · 杭电具身智能实验室 · 2 人</div>
         <ul class="roles">
           <li><span>后端</span><b>流水线与规则引擎</b> <i>FastAPI · 确定性流水线</i></li>
           <li><span>前端</span><b>报告与打印</b> <i>条款高亮 · 推演 · PDF</i></li>
           <li><span>规则</span><b>条款与法条整理</b> <i>40 条规则 · 30 组法条</i></li>
-          <li><span>产品</span><b>场景与访谈</b> <i>学生创业者 · 基地</i></li>
+          <li><span>产品</span><b>场景与需求</b> <i>学生创业者 · 基地</i></li>
         </ul>
         <div class="team-note">
-          姓名与背景见附页（待补）。法条审校：执业律师（洽谈中，未签约）。
+          Shuuyou、6TDooo，杭州电子科技大学具身智能实验室。法条审校：计划引入执业律师，尚未落实。
           63 小时内完成从 0 到可演示：后端流水线、前端流程、40 条规则库、容器部署与冒烟测试。
         </div>
       </div>
@@ -1091,7 +1091,7 @@ table.cmp tr.us td:first-child::before{content:"● ";font-size:8px;vertical-ali
     <div class="why-us">
       <div class="k">为什么是我们</div>
       <div class="i"><b>已经跑通过一遍</b>63 小时做出可演示的完整链路，不是概念稿。</div>
-      <div class="i"><b>三件事都有人负责</b>流水线、报告排版、条款与法条，各有人能从早改到晚。</div>
+      <div class="i"><b>两个人覆盖全链路</b>流水线、报告排版、条款与法条，我们两人都能从早改到晚。</div>
       <div class="i"><b>换场景的成本低</b>规则库是数据，不是代码；下一个场景改 JSON 就能上。</div>
     </div>
 
