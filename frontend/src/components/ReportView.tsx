@@ -97,7 +97,12 @@ export default function ReportView({ report, onEdit, onRestart }: ReportViewProp
     setActiveIds(new Set())
     setFilter('all')
     setShowAllRisks(false)
-    window.scrollTo({ top: 0, behavior: 'auto' })
+    const reset = () => {
+      document.getElementById('verdict')?.scrollIntoView({ block: 'start' })
+    }
+    reset()
+    const timer = window.setTimeout(reset, 120)
+    return () => window.clearTimeout(timer)
   }, [report.case_id])
 
   const risks = report.risks ?? []
