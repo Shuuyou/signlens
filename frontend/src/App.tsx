@@ -4,7 +4,7 @@ import { FALLBACK_INPUTS } from './demoData'
 import Home from './components/Home'
 import Intake from './components/Intake'
 import Analyzing from './components/Analyzing'
-import ReportView from './components/ReportView'
+import BriefView from './components/BriefView'
 import type { CaseInput, CompanyEvidence, DemoCase, Report, Verdict } from './types'
 
 type View = 'home' | 'intake' | 'analyzing' | 'report' | 'error'
@@ -278,7 +278,7 @@ export default function App() {
         )}
 
         {view === 'report' && report && (
-          <ReportView report={report} onEdit={goEdit} onRestart={restart} />
+          <BriefView report={report} onEdit={goEdit} onRestart={restart} />
         )}
 
         {view === 'error' && (
