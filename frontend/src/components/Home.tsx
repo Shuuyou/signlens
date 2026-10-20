@@ -65,7 +65,7 @@ export default function Home({ onStart, onDemoSelect, loadingDemoId, error }: Ho
             </div>
             <div className="hero-kicker">
               <span className="hero-dot" />
-              合同决策体检 · 演示版
+              合同决策体检
             </div>
             <h1>
               签合同、付预付款之前，
@@ -94,7 +94,6 @@ export default function Home({ onStart, onDemoSelect, loadingDemoId, error }: Ho
           <div className="hero-preview" aria-hidden="true">
             <div className="preview-top">
               <span>体检报告 / 供应商采购</span>
-              <span className="preview-tag">DEMO</span>
             </div>
             <div className="preview-verdict">
               <span className="preview-seal">谈</span>

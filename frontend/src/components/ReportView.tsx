@@ -1,6 +1,5 @@
 import { useEffect, useMemo, useState } from 'react'
 import { RISK_ORDER, ROLE_OPTIONS, VERDICT_META } from '../constants'
-import { SubXiaocha } from '../mascot/SubXiaocha'
 import { buildScenarios, simulate } from '../simulate'
 import type { Report, RiskLevel } from '../types'
 import ClauseDocument from './ClauseDocument'
@@ -92,10 +91,13 @@ function parseSheetItem(item: string): SheetEntry {
 export default function ReportView({ report, onEdit, onRestart }: ReportViewProps) {
   const [activeIds, setActiveIds] = useState<Set<string>>(() => new Set())
   const [filter, setFilter] = useState<RiskFilter>('all')
+  const [showAllRisks, setShowAllRisks] = useState(false)
 
   useEffect(() => {
     setActiveIds(new Set())
     setFilter('all')
+    setShowAllRisks(false)
+    window.scrollTo({ top: 0, behavior: 'auto' })
   }, [report.case_id])
 
   const risks = report.risks ?? []
@@ -129,6 +131,8 @@ export default function ReportView({ report, onEdit, onRestart }: ReportViewProp
   }, [sortedRisks])
   const visibleRisks =
     filter === 'all' ? sortedRisks : sortedRisks.filter((risk) => risk.level === filter)
+  const displayedRisks =
+    filter === 'all' && !showAllRisks ? visibleRisks.slice(0, 3) : visibleRisks
 
   const counts = useMemo(
     () => ({
@@ -211,6 +215,12 @@ export default function ReportView({ report, onEdit, onRestart }: ReportViewProp
             </button>
             <span className="toolbar-case mono">案例 {report.case_id}</span>
           </div>
+          <nav className="report-anchors" aria-label="报告导航">
+            <a href="#verdict">结论</a>
+            <a href="#risks">风险</a>
+            <a href="#whatif">推演</a>
+            <a href="#negotiation">谈判单</a>
+          </nav>
           <div className="toolbar-actions">
             <button type="button" className="btn btn-ghost btn-sm" onClick={onRestart}>
               重新体检
@@ -225,12 +235,9 @@ export default function ReportView({ report, onEdit, onRestart }: ReportViewProp
           </div>
         </div>
 
-        <section className={`verdict-banner verdict-${decision.verdict}`}>
+        <section id="verdict" className={`verdict-banner verdict-${decision.verdict}`}>
           <div className="verdict-seal" aria-hidden="true">
             {meta.word}
-          </div>
-          <div className="verdict-mascot" aria-hidden="true">
-            <SubXiaocha role="legal" size={72} />
           </div>
           <div className="verdict-main">
             <div className="verdict-kicker">
@@ -328,18 +335,9 @@ export default function ReportView({ report, onEdit, onRestart }: ReportViewProp
                 </div>
               </div>
 
-              <div className="risk-summary">
-                <span className="summary-pill summary-high">高风险 {counts.high}</span>
-                <span className="summary-pill summary-medium">中风险 {counts.medium}</span>
-                <span className="summary-pill summary-low">低风险 {counts.low}</span>
-                <span className="summary-note">
-                  建议顺序：先处理高风险，再把中风险一并提出。
-                </span>
-              </div>
-
               <div className="risk-list">
-                {visibleRisks.length > 0 ? (
-                  visibleRisks.map((risk) => (
+                {displayedRisks.length > 0 ? (
+                  displayedRisks.map((risk) => (
                     <RiskCard
                       key={risk.id}
                       risk={risk}
@@ -356,6 +354,17 @@ export default function ReportView({ report, onEdit, onRestart }: ReportViewProp
                   </p>
                 )}
               </div>
+              {filter === 'all' && visibleRisks.length > 3 && (
+                <button
+                  type="button"
+                  className="risk-show-more"
+                  onClick={() => setShowAllRisks((value) => !value)}
+                >
+                  {showAllRisks
+                    ? '收起，只看最关键的 3 条'
+                    : `展开全部 ${visibleRisks.length} 条风险`}
+                </button>
+              )}
             </section>
 
             <section className="panel report-section" id="clauses">

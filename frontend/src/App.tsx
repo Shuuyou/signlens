@@ -241,8 +241,6 @@ export default function App() {
               })}
             </nav>
           )}
-
-          <span className="topbar-badge">DEMO</span>
         </div>
       </header>
 

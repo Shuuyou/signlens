@@ -172,7 +172,7 @@ export default function Intake({ initial, prefilled, onSubmit, onBack }: IntakeP
                   required
                 />
                 <div className="field-foot">
-                  <span>支持直接从 Word / PDF 中复制文字。</span>
+                  <span>粘贴全文，或上传 .txt。</span>
                   <span className="file-actions">
                     <button
                       type="button"
@@ -181,13 +181,12 @@ export default function Intake({ initial, prefilled, onSubmit, onBack }: IntakeP
                     >
                       上传 .txt
                     </button>
-                    <span className="file-hint">PDF 暂不解析</span>
                   </span>
                 </div>
                 <input
                   ref={fileInput}
                   type="file"
-                  accept=".txt,.pdf,text/plain,application/pdf"
+                  accept=".txt,text/plain"
                   onChange={handleFile}
                   className="sr-only"
                   tabIndex={-1}
@@ -279,7 +278,6 @@ export default function Intake({ initial, prefilled, onSubmit, onBack }: IntakeP
               <ul className="tips-list">
                 <li>主体名称写错，会导致核查结果偏掉，先对一遍营业执照。</li>
                 <li>合同附件、补充协议里的条款也要一起粘贴。</li>
-                <li>演示环境数据存放在内存中，服务重启即清空。</li>
               </ul>
             </section>
 
@@ -288,7 +286,7 @@ export default function Intake({ initial, prefilled, onSubmit, onBack }: IntakeP
                 {submitting ? '正在提交…' : '开始体检'}
                 {!submitting && <span aria-hidden="true">→</span>}
               </button>
-              <p>提交后约 10–30 秒生成报告。所有分析在本地服务完成。</p>
+              <p>通常 10–30 秒。</p>
             </div>
           </aside>
         </form>

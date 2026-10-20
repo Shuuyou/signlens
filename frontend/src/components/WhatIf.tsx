@@ -26,7 +26,7 @@ export default function WhatIf({
     hasScenarios && simulation.activeCount === simulation.scenarios.length
 
   return (
-    <section className="panel whatif-panel">
+    <section id="whatif" className="panel whatif-panel">
       <div className="section-title-row">
         <div>
           <span className="eyebrow">谈判推演</span>

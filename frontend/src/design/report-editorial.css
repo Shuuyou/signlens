@@ -1997,3 +1997,105 @@
     text-decoration: none;
   }
 }
+/* HCI pass: attention guidance, cognitive load, remove fake precision */
+.risk-summary,
+.risk-confidence,
+.fact-meta,
+.preview-tag,
+.verdict-counts,
+.verdict-caption,
+.hero-kicker .demo-word {
+  display: none !important;
+}
+
+body {
+  font-size: 16px;
+}
+
+.meta-block > span,
+.source-note,
+.section-sub {
+  font-size: 11px;
+}
+
+.report-toolbar {
+  position: sticky;
+  top: 56px;
+  z-index: 20;
+  background: var(--mc-paper);
+  border-bottom: 1px solid var(--mc-line);
+  padding-block: 8px;
+}
+
+.report-anchors {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  font-size: 12px;
+}
+
+.report-anchors a {
+  color: var(--mc-ink-2);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+
+.report-anchors a:hover {
+  color: var(--mc-green);
+  border-bottom-color: var(--mc-green);
+}
+
+/* Verdict: paper + one rule, not a full dashboard tint */
+.verdict-banner {
+  background: var(--mc-paper) !important;
+  border: 1px solid var(--mc-line) !important;
+  border-left: 6px solid var(--mc-red) !important;
+  box-shadow: none !important;
+}
+
+.verdict-banner.verdict-negotiate {
+  border-left-color: var(--mc-amber) !important;
+}
+
+.verdict-banner.verdict-sign {
+  border-left-color: var(--mc-green) !important;
+}
+
+.risk-card {
+  box-shadow: none !important;
+}
+
+.risk-card .risk-suggestion {
+  background: var(--mc-green-tint);
+  border-left: 3px solid var(--mc-green);
+}
+
+.report-aside {
+  position: sticky;
+  top: 112px;
+  align-self: start;
+}
+
+.risk-show-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 14px;
+  padding: 8px 14px;
+  border: 1px solid var(--mc-line-2);
+  border-radius: 999px;
+  background: var(--mc-paper);
+  color: var(--mc-green);
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.risk-show-more:hover {
+  border-color: var(--mc-green);
+  background: var(--mc-green-tint);
+}
+
+@media (max-width: 1024px) {
+  .report-aside { position: static; }
+  .report-toolbar { position: static; }
+}
