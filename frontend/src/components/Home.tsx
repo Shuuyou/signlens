@@ -101,7 +101,6 @@ export default function Home({ onStart, onDemoSelect, loadingDemoId, error }: Ho
                 <strong>先谈再签</strong>
                 <small>3 处关键条款需要修改</small>
               </div>
-              <span className="preview-confidence">82%</span>
             </div>
             <div className="preview-risks">
               <div>
@@ -131,7 +130,7 @@ export default function Home({ onStart, onDemoSelect, loadingDemoId, error }: Ho
           <div className="section-head">
             <div>
               <span className="eyebrow">演示案例</span>
-              <h2>先从一个真实场景开始</h2>
+              <h2>先从一个典型场景开始</h2>
               <p>三个已脱敏的合同场景，覆盖供应商预付、校园培训贷与房屋租赁。载入后可修改任何内容。</p>
             </div>
             <span className="section-note">
