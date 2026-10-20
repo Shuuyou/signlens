@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SignLens 签前体检 · 路演 deck</title>
+<style>
+@font-face{
+  font-family:"Smiley Sans";
+  src:url("../frontend/public/fonts/smiley-sans-v2.0.1.woff2") format("woff2");
+  font-weight:400;font-style:normal;font-display:swap;
+}
+
+:root{
+  --paper:#faf9f5;
+  --ink:#24261f;
+  --ink2:#64675c;
+  --ink3:#8b8e80;
+  --line:#e4e5db;
+  --line2:#ccd0bf;
+  --lime:#d5ed83;
+  --green:#286544;
+  --green-deep:#204d35;
+  --green-tint:#f0f5e6;
+  --red:#c0392b;
+  --red-tint:#fdf1ef;
+  --amber:#a8721c;
+  --amber-tint:#fdf6e9;
+  --sans:"PingFang SC","Microsoft YaHei","Noto Sans SC","Helvetica Neue",Arial,sans-serif;
+  --serif:"Songti SC","STSong","SimSun","Noto Serif SC",serif;
+  --display:"Smiley Sans",var(--sans);
+}
+
+*{box-sizing:border-box;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+
+html,body{margin:0;padding:0;background:#e6e5dd;color:var(--ink);font-family:var(--sans);}
+body{display:flex;flex-direction:column;align-items:center;gap:26px;padding:34px 0 60px;}
+
+.slide{
+  position:relative;width:1280px;height:720px;background:var(--paper);
+  padding:50px 64px 44px;overflow:hidden;flex:none;
+  display:flex;flex-direction:column;
+  box-shadow:0 12px 34px rgba(36,38,31,.16);
+}
+
+/* ---------- shared chrome ---------- */
+.eyebrow{
+  display:flex;align-items:center;gap:10px;
+  font-size:10.5px;letter-spacing:.24em;color:var(--green);font-weight:500;flex:none;
+}
+.eyebrow::before{content:"";width:18px;height:1px;background:var(--green);display:block}
+.eyebrow .num{letter-spacing:.1em;color:var(--ink3)}
+
+h2{
+  font-family:var(--display);font-weight:400;font-size:42px;line-height:1.2;
+  letter-spacing:.005em;margin:12px 0 0;flex:none;
+}
+h2 em{font-style:normal;background:linear-gradient(transparent 62%,var(--lime) 62%);padding:0 2px;}
+.lede{margin:11px 0 0;font-size:14.5px;line-height:1.78;color:var(--ink2);max-width:870px;flex:none}
+.lede strong{color:var(--ink);font-weight:600}
+
+.foot{
+  position:absolute;left:64px;right:64px;bottom:20px;
+  display:flex;justify-content:space-between;align-items:baseline;
+  border-top:1px solid var(--line);padding-top:7px;
+  font-size:10px;letter-spacing:.12em;color:var(--ink3);
+}
+.foot .pg{font-variant-numeric:tabular-nums;letter-spacing:.06em}
+
+.small{font-size:11.5px;line-height:1.7;color:var(--ink3)}
+.body{flex:1;display:flex;flex-direction:column;justify-content:space-between;padding:22px 0 4px;min-height:0}
+.block-title{font-size:11px;letter-spacing:.16em;color:var(--ink3);margin:0 0 10px;display:flex;align-items:center;gap:8px;flex:none}
+.block-title::after{content:"";flex:1;height:1px;background:var(--line)}
+
+/* ---------- 01 cover ---------- */
+.cover{padding-top:58px;justify-content:space-between}
+.cover .brand{display:flex;align-items:center;gap:12px}
+.brand-mark{
+  width:38px;height:38px;border-radius:10px;background:var(--green);color:var(--lime);
+  display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:19px;
+}
+.brand-txt{font-family:var(--display);font-size:17px;line-height:1.15}
+.brand-txt small{display:block;font-family:var(--sans);font-size:9px;letter-spacing:.3em;color:var(--ink3);margin-top:3px}
+.cover-main{display:flex;gap:52px;align-items:flex-start}
+.cover-left{width:664px;flex:none}
+.cover-kicker{font-size:11px;letter-spacing:.22em;color:var(--green)}
+.cover h1{
+  font-family:var(--display);font-weight:400;font-size:66px;line-height:1.16;
+  letter-spacing:.01em;margin:16px 0 0;
+}
+.cover h1 .hl{background:linear-gradient(transparent 60%,var(--lime) 60%);padding:0 3px}
+.cover-sub{margin-top:22px;font-size:15px;line-height:1.85;color:var(--ink2);width:574px}
+.cover-sub b{color:var(--ink);font-weight:600}
+.cover-tags{display:flex;gap:22px;margin-top:24px;font-size:11.5px;letter-spacing:.06em;color:var(--ink2)}
+.cover-tags span::before{content:"—";color:var(--line2);margin-right:8px}
+
+.cover-card{
+  width:428px;background:#fff;border:1px solid var(--line);border-radius:14px;
+  padding:22px 24px;box-shadow:0 8px 26px rgba(36,38,31,.07);
+}
+.cc-head{display:flex;justify-content:space-between;align-items:center;font-size:10.5px;letter-spacing:.14em;color:var(--ink3);border-bottom:1px solid var(--line);padding-bottom:12px}
+.cc-demo{font-size:9px;letter-spacing:.16em;color:var(--green);border:1px solid var(--line2);border-radius:4px;padding:2px 6px}
+.cc-verdict{display:flex;align-items:baseline;gap:12px;margin-top:16px}
+.cc-big{font-family:var(--display);font-size:44px;color:var(--red);line-height:1}
+.cc-verdict small{font-size:11px;color:var(--ink3);letter-spacing:.06em}
+.cc-rows{margin-top:14px;border-top:1px solid var(--line)}
+.cc-row{display:flex;justify-content:space-between;gap:14px;padding:10px 0;border-bottom:1px solid var(--line);font-size:12px;color:var(--ink2)}
+.cc-row b{color:var(--ink);font-weight:600}
+.cc-foot{margin-top:14px;display:flex;justify-content:space-between;font-size:10.5px;color:var(--ink3);letter-spacing:.05em}
+.cover-meta{
+  display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid var(--line);
+  padding-top:12px;font-size:10.5px;letter-spacing:.1em;color:var(--ink3);
+}
+
+/* ---------- 02 person ---------- */
+.two-col{display:flex;gap:44px}
+.col-l{width:344px;flex:none}
+.col-r{flex:1;min-width:0}
+.tl{border-left:1px solid var(--line2);margin:0;padding:0;list-style:none}
+.tl li{position:relative;padding:0 0 19px 22px}
+.tl li::before{content:"";position:absolute;left:-3.5px;top:5px;width:6px;height:6px;border-radius:50%;background:var(--line2)}
+.tl li:last-child::before{background:var(--red)}
+.tl time{display:block;font-size:10.5px;letter-spacing:.1em;color:var(--ink3);margin-bottom:2px}
+.tl p{margin:0;font-size:12.5px;line-height:1.6;color:var(--ink2)}
+.tl li:last-child p{color:var(--ink)}
+.also{margin-top:8px;padding:12px 14px;border:1px solid var(--line);border-radius:8px;background:#fff}
+.also .h{font-size:10px;letter-spacing:.14em;color:var(--ink3);margin-bottom:7px}
+.also div.r{display:flex;justify-content:space-between;gap:10px;font-size:11.5px;line-height:1.55;padding:3px 0;color:var(--ink2)}
+.also div.r b{font-weight:600;color:var(--ink)}
+.also div.r i{font-style:normal;font-size:10px;color:var(--red);letter-spacing:.04em;white-space:nowrap}
+.also div.r i.ok{color:var(--green)}
+
+.knows{display:flex;gap:14px;margin-bottom:18px}
+.knows > div{flex:1;background:#fff;border:1px solid var(--line);border-radius:10px;padding:9px 12px}
+.knows b{font-family:var(--display);font-size:20px;font-weight:400;display:block;line-height:1.3}
+.knows span{font-size:10.5px;color:var(--ink3)}
+.miss{list-style:none;margin:0;padding:0}
+.miss li{border-left:2px solid var(--red);padding:0 0 0 14px;margin-bottom:16px}
+.miss li:last-child{margin-bottom:0}
+.miss .t{font-size:12.5px;font-weight:600;color:var(--ink);margin-bottom:3px}
+.miss .q{font-family:var(--serif);font-size:12px;line-height:1.62;color:var(--ink2)}
+.miss .q b{color:var(--red);font-weight:400}
+.miss .num{color:var(--red);font-size:11px;letter-spacing:.08em;margin-right:6px}
+.quotebar{
+  padding:11px 16px;background:var(--green-tint);border-left:3px solid var(--green);
+  font-size:13px;line-height:1.6;color:var(--green-deep);
+}
+.quotebar b{font-family:var(--display);font-weight:400;font-size:15.5px}
+
+/* ---------- 03 cost ---------- */
+.stat-row{display:flex;align-items:flex-end;gap:28px}
+.stat-big{font-family:var(--display);font-size:64px;line-height:.88;color:var(--green);flex:none}
+.stat-big small{font-family:var(--sans);font-size:13px;color:var(--ink2);margin-left:6px;letter-spacing:.04em}
+.stat-note{font-size:12px;line-height:1.6;color:var(--ink2);width:470px;padding-bottom:4px}
+.cost-cards{display:flex;gap:18px}
+.cost{flex:1;background:#fff;border:1px solid var(--line);border-radius:12px;padding:17px 19px;display:flex;flex-direction:column}
+.cost .tag{font-size:10px;letter-spacing:.14em;color:var(--ink3)}
+.cost .fig{font-family:var(--display);font-size:28px;line-height:1.2;margin:7px 0 2px}
+.cost .fig.r{color:var(--red)}
+.cost .sub{font-size:10.5px;color:var(--ink3)}
+.cost p{margin:8px 0 0;font-size:12.2px;line-height:1.7;color:var(--ink2)}
+.cost .flag{margin-top:auto;padding-top:10px;font-size:10px;color:var(--amber);letter-spacing:.04em}
+.flag::before{content:"△ ";}
+.common{display:flex;border-top:1px solid var(--ink);padding-top:12px;gap:26px}
+.common .k{width:72px;flex:none;font-size:10.5px;letter-spacing:.12em;color:var(--green);line-height:1.6}
+.common .i{flex:1;font-size:11.8px;line-height:1.62;color:var(--ink2)}
+.common .i b{display:block;font-family:var(--display);font-weight:400;font-size:13.5px;color:var(--ink);margin-bottom:2px}
+.caliber{font-size:10.5px;line-height:1.65;color:var(--ink3);border-top:1px dashed var(--line2);padding-top:9px}
+.caliber b{color:var(--ink2)}
+
+/* ---------- 04 insight ---------- */
+.three{display:flex;border-top:1px solid var(--line)}
+.three > div{flex:1;padding:17px 26px 0 0;border-right:1px solid var(--line);margin-right:26px}
+.three > div:last-child{border-right:none;margin-right:0;padding-right:0}
+.three h3{font-size:12px;letter-spacing:.1em;margin:0 0 3px;font-weight:600}
+.three .who{font-size:10.5px;color:var(--ink3);line-height:1.65;min-height:34px}
+.three .ask{font-size:13px;line-height:1.62;margin:10px 0 0;color:var(--ink)}
+.three .ask b{font-family:var(--display);font-weight:400;font-size:16.5px}
+.three .gap{color:var(--ink3);font-size:12px}
+.three .last h3{color:var(--green)}
+.three .last .ask b{color:var(--green)}
+.qband{background:#fff;border:1px solid var(--line);border-radius:12px;padding:15px 18px}
+.qband .q{font-size:12.5px;color:var(--ink);margin-bottom:11px}
+.qband .q span{font-family:var(--serif);color:var(--ink2)}
+.qband .qa{display:flex;gap:22px}
+.qband .qa > div{flex:1;border-left:2px solid var(--line2);padding-left:13px}
+.qband .qa .who{font-size:10px;letter-spacing:.1em;color:var(--ink3)}
+.qband .qa p{margin:5px 0 4px;font-size:12px;line-height:1.62;color:var(--ink2)}
+.qband .qa em{font-style:normal;font-size:10.5px;color:var(--ink3)}
+.qband .qa .us{border-left-color:var(--green)}
+.qband .qa .us .who{color:var(--green)}
+.qband .qa .us p{color:var(--ink)}
+.qband .qa .us em{color:var(--green)}
+.insight-bar{background:var(--green);color:var(--paper);padding:15px 24px;display:flex;justify-content:space-between;align-items:center}
+.insight-bar b{font-family:var(--display);font-weight:400;font-size:25px;letter-spacing:.02em}
+.insight-bar span{font-size:11px;letter-spacing:.08em;opacity:.78}
+
+/* ---------- 05 pipeline ---------- */
+.steps{display:flex;gap:20px}
+.step{flex:1;border-top:2px solid var(--ink);padding-top:12px}
+.step .n{font-family:var(--display);font-size:12px;color:var(--green);letter-spacing:.08em}
+.step h3{font-family:var(--display);font-weight:400;font-size:23px;margin:3px 0 9px}
+.step ul{margin:0;padding:0;list-style:none}
+.step li{font-size:12.2px;line-height:1.62;color:var(--ink2);padding-left:12px;position:relative;margin-bottom:8px}
+.step li::before{content:"";position:absolute;left:0;top:7px;width:4px;height:4px;background:var(--line2)}
+.step li b{color:var(--ink);font-weight:600}
+.io{display:flex;align-items:stretch;gap:16px}
+.io-card{flex:1;border:1px solid var(--line);border-radius:10px;padding:14px 18px;background:#fff}
+.io-card.out{border-color:#cfe0c4;background:var(--green-tint)}
+.io-card .lbl{font-size:10px;letter-spacing:.16em;color:var(--ink3);margin-bottom:8px}
+.io-card.out .lbl{color:var(--green)}
+.io-row{display:flex;font-size:12px;line-height:1.55;padding:4px 0;color:var(--ink2)}
+.io-row b{width:66px;flex:none;color:var(--ink3);font-weight:400;font-size:10.5px;padding-top:2px}
+.io-card.out .io-row b{color:#6f8a6a}
+.io-row span{color:var(--ink)}
+.io-arrow{align-self:center;font-size:20px;color:var(--line2);flex:none}
+.pipe{
+  background:#fff;border:1px solid var(--line);border-radius:10px;
+  padding:12px 16px;display:flex;align-items:center;gap:11px;font-size:11px;letter-spacing:.06em;color:var(--ink2);
+}
+.pipe code{font-family:ui-monospace,Consolas,monospace;font-size:11px;color:var(--green-deep);letter-spacing:0}
+.pipe .arrow{color:var(--line2)}
+.pipe .note{margin-left:auto;color:var(--ink3);font-size:10.5px;letter-spacing:.02em}
+
+/* ---------- 06 shots ---------- */
+.shots{display:flex;gap:22px}
+.shot{flex:1;min-width:0}
+.frame{position:relative;background:#fff;border:1px solid var(--line);border-radius:8px;overflow:hidden;box-shadow:0 3px 12px rgba(36,38,31,.06)}
+.frame::after{content:"";position:absolute;left:0;right:0;bottom:0;height:36px;background:linear-gradient(to bottom,rgba(255,255,255,0),#fff 85%);pointer-events:none}
+.frame img{display:block;width:100%;object-fit:cover;object-position:top center}
+.h-big{height:354px}
+figure{margin:0}
+figcaption{font-size:11px;line-height:1.6;color:var(--ink2);margin-top:7px}
+figcaption b{color:var(--ink);font-weight:600}
+.reel{display:flex;border-top:1px solid var(--line2);padding-top:11px}
+.reel > div{flex:1;font-size:10.8px;line-height:1.5;color:var(--ink2);padding-right:10px}
+.reel b{display:block;font-family:var(--display);font-weight:400;font-size:13px;color:var(--green);margin-bottom:2px}
+.reel > div:nth-child(5) b{color:var(--red)}
+
+/* ---------- 07 anatomy ---------- */
+.anat{display:flex}
+.chain{display:flex;flex-direction:column;width:768px;flex:none}
+.link{display:flex;gap:14px}
+.link .rail{width:52px;flex:none;text-align:right;padding-top:3px}
+.link .rail span{font-size:10px;letter-spacing:.1em;color:var(--ink3);display:block;line-height:1.45}
+.link .rail span b{display:block;font-family:var(--display);font-weight:400;font-size:12.5px;color:var(--green);letter-spacing:.02em}
+.link .body{border-left:1px solid var(--line2);padding:0 0 34px 16px;flex:1;position:relative}
+.link .body::before{content:"";position:absolute;left:-3.5px;top:5px;width:6px;height:6px;border-radius:50%;background:var(--green)}
+.link:last-child .body{padding-bottom:0}
+.link .body .quoted{font-family:var(--serif);font-size:13.6px;line-height:1.8;color:var(--ink)}
+.link .body .quoted mark{background:var(--lime);padding:0 2px}
+.link .body p{margin:0;font-size:12.8px;line-height:1.8;color:var(--ink2)}
+.link .body .law{font-family:var(--serif);font-size:13px;line-height:1.8;color:var(--ink)}
+.link .body .law b{font-family:var(--sans);font-size:10.5px;letter-spacing:.05em;color:var(--green);display:block;margin-bottom:4px}
+.link .body .law .ex{font-family:var(--sans);font-size:9.5px;color:var(--ink3);margin-left:6px;letter-spacing:.04em}
+.link .body .sugg{font-size:12.7px;line-height:1.72;color:var(--green-deep);background:var(--green-tint);padding:11px 14px;border-radius:6px}
+.link .body .script{font-family:var(--serif);font-size:13px;line-height:1.8;color:var(--ink)}
+.link .body .script i{font-family:var(--sans);font-style:normal;font-size:10px;color:var(--ink3);margin-left:8px;letter-spacing:.04em}
+.anat-right{flex:1;padding-left:26px;border-left:1px solid var(--line);margin-left:26px}
+.hard{margin:0;padding:0;list-style:none}
+.hard li{padding:11px 0;border-bottom:1px solid var(--line)}
+.hard li:first-child{padding-top:0}
+.hard b{display:block;font-size:12px;margin-bottom:2px}
+.hard span{font-size:10.8px;line-height:1.55;color:var(--ink2)}
+.verdict-chip{display:inline-block;margin-top:12px;font-size:10.5px;letter-spacing:.06em;color:var(--red);background:var(--red-tint);padding:4px 9px;border-radius:4px}
+.hard-note{margin-top:12px;font-size:10.5px;line-height:1.65;color:var(--ink3)}
+.foot-notes{display:flex;flex-direction:column;gap:13px}
+.limit{display:flex;gap:12px;align-items:baseline;border-top:1px solid var(--line);padding-top:10px;font-size:11.4px;line-height:1.6;color:var(--ink2)}
+.limit b{flex:none;font-size:10px;letter-spacing:.1em;color:var(--green)}
+.more{display:flex;gap:14px}
+.more .h{font-size:10px;letter-spacing:.12em;color:var(--ink3);width:74px;flex:none;line-height:1.5;padding-top:2px}
+.more .r{flex:1;font-size:11px;line-height:1.55;color:var(--ink2)}
+.more .r b{display:block;font-size:10.5px;color:var(--ink);font-weight:600;margin-bottom:1px}
+.more .r i{font-style:normal;font-family:var(--serif);font-size:10.5px;color:var(--green)}
+
+/* ---------- 08 what-if (dark) ---------- */
+.slide.dark{background:var(--green-deep);color:#f4f4ec}
+.slide.dark .eyebrow{color:var(--lime)}
+.slide.dark .eyebrow::before{background:var(--lime)}
+.slide.dark h2{color:#f7f7ee}
+.slide.dark .lede{color:#c3d2c4}
+.slide.dark .foot{color:#7d9583;border-top-color:#38604a}
+.wi{display:flex;gap:30px}
+.wi-left{width:646px;flex:none}
+.wi-item{display:flex;gap:12px;align-items:flex-start;border:1px solid #3f6a52;border-radius:8px;padding:12px 14px;margin-bottom:10px;background:rgba(255,255,255,.03)}
+.wi-item .box{width:13px;height:13px;border:1px solid #7d9b86;border-radius:2px;flex:none;margin-top:2px;position:relative}
+.wi-item.on .box{background:var(--lime);border-color:var(--lime)}
+.wi-item.on .box::after{content:"";position:absolute;left:3px;top:1px;width:5px;height:8px;border:1.5px solid var(--green-deep);border-top:0;border-left:0;transform:rotate(40deg)}
+.wi-item .txt{flex:1;min-width:0}
+.wi-item .txt b{display:block;font-size:12.6px;font-weight:600;color:#f2f5ea;margin-bottom:2px}
+.wi-item .txt i{font-style:normal;font-size:10.8px;line-height:1.58;color:#a9c0af;display:block}
+.wi-item .rel{font-size:9.5px;color:var(--lime);letter-spacing:.04em;flex:none;padding-top:2px;white-space:nowrap}
+.wi-foot{margin-top:12px;padding-top:10px;border-top:1px dashed #3f6a52;font-size:10.5px;line-height:1.6;color:#8fae97}
+.wi-panel{border:1px solid #3f6a52;border-radius:10px;padding:22px;display:flex;flex-direction:column;flex:1;background:rgba(0,0,0,.12)}
+.wi-label{font-size:10px;letter-spacing:.18em;color:#9ab8a1}
+.wi-verdict{display:flex;align-items:baseline;gap:12px;margin-top:8px}
+.wi-big{font-family:var(--display);font-size:46px;line-height:1;color:var(--lime)}
+.wi-verdict span{font-size:11px;color:#b9cdbe;letter-spacing:.06em}
+.wi-table{margin-top:16px;border-top:1px solid #3f6a52}
+.wi-row{display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid rgba(63,106,82,.6);font-size:11.5px;color:#b9cdbe}
+.wi-row b{color:#f0f4e8;font-weight:600;font-variant-numeric:tabular-nums}
+.wi-row b.dim{color:#8fae97}
+.wi-note{margin-top:auto;font-size:10.2px;line-height:1.62;color:#9ab8a1;padding-top:14px}
+.flip-band{display:flex;gap:26px;border-top:1px solid #3f6a52;padding-top:14px}
+.flip-band > div{flex:1}
+.flip-band b{display:block;font-size:11.8px;color:#eef3e4;margin-bottom:4px}
+.flip-band p{margin:0;font-size:10.9px;line-height:1.65;color:#9ab8a1}
+.flip-band code{font-family:ui-monospace,Consolas,monospace;color:var(--lime);font-size:10.5px}
+
+/* ---------- 09 table ---------- */
+table.cmp{width:100%;border-collapse:collapse}
+table.cmp th{font-size:10px;letter-spacing:.14em;color:var(--ink3);font-weight:500;text-align:left;padding:0 12px 9px 0;border-bottom:1px solid var(--line2)}
+table.cmp td{font-size:12px;line-height:1.5;padding:12px 12px 12px 0;border-bottom:1px solid var(--line);vertical-align:top;color:var(--ink2)}
+table.cmp td:first-child{font-weight:600;color:var(--ink)}
+table.cmp td .src{display:block;font-size:10px;color:var(--ink3);margin-top:2px;letter-spacing:.02em}
+table.cmp tr.us td{background:var(--green-tint);color:var(--green-deep);border-bottom-color:#cfe0c4}
+table.cmp tr.us td:first-child{color:var(--green)}
+table.cmp tr.us td:first-child::before{content:"● ";font-size:8px;vertical-align:middle}
+.why-now{display:flex;gap:22px;border-top:1px solid var(--ink);padding-top:11px}
+.why-now .k{width:82px;flex:none;font-size:10.5px;letter-spacing:.12em;color:var(--green);line-height:1.6}
+.why-now .i{flex:1;font-size:11.4px;line-height:1.6;color:var(--ink2)}
+.why-now .i b{display:block;font-size:11.8px;color:var(--ink);margin-bottom:2px}
+
+/* ---------- 10 pricing ---------- */
+.prices{display:flex;gap:16px}
+.price{flex:1;background:#fff;border:1px solid var(--line);border-radius:12px;padding:17px 19px;position:relative;display:flex;flex-direction:column}
+.price.hot{border-color:var(--green);box-shadow:0 4px 18px rgba(40,101,68,.1)}
+.price .amt{font-family:var(--display);font-size:42px;line-height:1;color:var(--ink)}
+.price .amt small{font-family:var(--sans);font-size:12px;color:var(--ink3);margin-left:3px}
+.price .nm{font-size:12.5px;font-weight:600;margin-top:10px}
+.price p{margin:6px 0 0;font-size:11.5px;line-height:1.65;color:var(--ink2)}
+.incl{list-style:none;margin:12px 0 0;padding:10px 0 0;border-top:1px dashed var(--line2)}
+.incl li{font-size:11px;line-height:1.7;color:var(--ink2);padding-left:11px;position:relative}
+.incl li::before{content:"·";position:absolute;left:2px;color:var(--green)}
+.price .fit{margin-top:auto;padding-top:10px;font-size:10.5px;color:var(--ink3)}
+.price .badge{position:absolute;right:14px;top:14px;font-size:9px;letter-spacing:.1em;background:var(--lime);color:var(--green-deep);padding:2px 6px;border-radius:3px}
+.base-strip{display:flex;align-items:center;gap:20px;padding:13px 18px;background:var(--green-tint);border-radius:10px}
+.base-strip .k{font-size:11px;letter-spacing:.14em;color:var(--green);flex:none;width:74px}
+.base-strip p{margin:0;font-size:11.5px;line-height:1.62;color:var(--green-deep);flex:1}
+.base-strip .price-tag{font-family:var(--display);font-size:17px;color:var(--green);flex:none}
+.unit{display:flex;border-top:1px solid var(--line2);padding-top:12px}
+.unit .lab{width:88px;flex:none;font-size:10px;letter-spacing:.12em;color:var(--ink3);line-height:1.6;padding-right:10px}
+.unit > div{flex:1;padding-right:16px}
+.unit b{display:block;font-size:11.8px;color:var(--ink);margin-bottom:3px}
+.unit span{font-size:10.8px;line-height:1.55;color:var(--ink2)}
+.price-note{font-size:10.5px;line-height:1.65;color:var(--ink3)}
+.price-note b{color:var(--ink2)}
+
+/* ---------- 11 plan ---------- */
+.plan{display:flex;gap:22px}
+.phase{flex:1;border-top:1px solid var(--line2);padding-top:11px}
+.phase .d{font-size:10px;letter-spacing:.16em;color:var(--green)}
+.phase h3{font-family:var(--display);font-weight:400;font-size:18px;margin:4px 0 8px}
+.phase ul{margin:0;padding:0;list-style:none}
+.phase li{font-size:11.5px;line-height:1.6;color:var(--ink2);padding-left:11px;position:relative;margin-bottom:6px}
+.phase li::before{content:"";position:absolute;left:0;top:7px;width:4px;height:4px;background:var(--line2)}
+.phase li b{color:var(--ink);font-weight:600}
+.tbar{display:flex;gap:5px;margin-bottom:9px}
+.tbar > div{flex:1;height:34px;background:var(--green);color:#f2f5ea;font-size:10.5px;display:flex;align-items:center;gap:9px;padding:0 13px;border-radius:3px}
+.tbar > div:nth-child(2){background:#eef3e6;color:var(--green-deep);border:1px solid #cfe0c4}
+.tbar > div:nth-child(3){background:var(--green-deep)}
+.tbar b{font-family:var(--display);font-weight:400;font-size:11.5px;opacity:.7;letter-spacing:.02em}
+.tbar > div:nth-child(2) b{opacity:.6}
+.metrics{display:flex;align-items:stretch;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:#fff}
+.metrics .lab{background:var(--ink);color:var(--paper);font-size:10px;letter-spacing:.08em;padding:10px 12px;flex:none;display:flex;align-items:center;width:104px;line-height:1.5}
+.metrics .m{flex:1;text-align:center;padding:10px 6px;border-right:1px solid var(--line);font-size:10.5px;color:var(--ink2)}
+.metrics .m:last-child{border-right:none}
+.metrics .m b{display:block;font-family:var(--display);font-weight:400;font-size:15px;color:var(--ink);margin-bottom:1px}
+.risk-block{display:flex;flex-direction:column;gap:10px}
+.risks{display:flex;gap:22px;border-top:1px solid var(--line);padding-top:11px}
+.risks > div{flex:1;font-size:11.2px;line-height:1.6;color:var(--ink2)}
+.risks b{color:var(--ink);font-weight:600}
+.risks .k{display:block;font-size:9.5px;letter-spacing:.1em;color:var(--red);margin-bottom:2px}
+.plan-note{font-size:10.5px;color:var(--amber);line-height:1.6}
+
+/* ---------- 12 team ---------- */
+.team-wrap{display:flex;gap:40px}
+.tm{width:404px;flex:none}
+.roles{list-style:none;margin:0;padding:0}
+.roles li{display:flex;gap:12px;padding:13px 0;border-bottom:1px solid var(--line);font-size:12px;line-height:1.5}
+.roles li span{width:56px;flex:none;color:var(--ink3);font-size:10.5px;letter-spacing:.06em;padding-top:1px}
+.roles li b{font-weight:600;color:var(--ink)}
+.roles li i{font-style:normal;color:var(--ink3);font-size:10.5px}
+.team-note{margin-top:13px;font-size:11.2px;line-height:1.75;color:var(--ink3)}
+.bounds{flex:1;min-width:0}
+.bounds ul{list-style:none;margin:0;padding:0}
+.bounds li{display:flex;gap:11px;padding:10.5px 0;border-bottom:1px solid var(--line);font-size:11.8px;line-height:1.55;color:var(--ink2)}
+.bounds li .mk{color:var(--green);font-size:11px;flex:none;width:12px}
+.bounds li b{color:var(--ink);font-weight:600}
+.why-us{display:flex;gap:22px;border-top:1px solid var(--ink);padding-top:14px}
+.why-us .k{width:82px;flex:none;font-size:10.5px;letter-spacing:.12em;color:var(--green);line-height:1.6}
+.why-us .i{flex:1;font-size:11.2px;line-height:1.65;color:var(--ink2)}
+.why-us .i b{display:block;color:var(--ink);font-weight:600;margin-bottom:2px;font-size:11.5px}
+.closing{display:flex;justify-content:space-between;align-items:flex-end;border-top:1px solid var(--line2);padding-top:13px}
+.closing .line{font-family:var(--display);font-size:33px;letter-spacing:.02em}
+.closing .line em{font-style:normal;color:var(--green)}
+.closing .meta{font-size:10.5px;line-height:1.75;color:var(--ink3);text-align:right;letter-spacing:.04em}
+
+/* ---------- screen-only toolbar ---------- */
+.bar{position:fixed;right:22px;bottom:22px;z-index:9}
+.bar button{
+  font-family:var(--sans);font-size:12px;padding:9px 16px;border-radius:999px;border:1px solid var(--green);
+  background:var(--green);color:#f7f7ef;cursor:pointer;box-shadow:0 6px 18px rgba(36,38,31,.2);
+}
+
+/* ---------- print ---------- */
+@page{size:13.333in 7.5in;margin:0}
+@media print{
+  html,body{background:#fff;padding:0;margin:0;display:block}
+  body{gap:0}
+  .bar{display:none!important}
+  .slide{
+    box-shadow:none;margin:0;break-after:page;page-break-after:always;
+    break-inside:avoid;page-break-inside:avoid;
+  }
+  .slide:last-of-type{break-after:auto;page-break-after:auto}
+}
+</style>
+</head>
+<body>
+
+<!-- 01 · 封面 -->
+<section class="slide cover">
+  <div class="brand">
+    <div class="brand-mark">签</div>
+    <div class="brand-txt">签前体检<small>SIGNLENS</small></div>
+  </div>
+
+  <div class="cover-main">
+    <div class="cover-left">
+      <div class="cover-kicker">合同决策体检 · 大学生创业者 / OPC</div>
+      <h1>签之前，<br>先知道<span class="hl">哪一条</span>会坑你。</h1>
+      <div class="cover-sub">
+        把合同全文和对方公司名交给 SignLens，得到 <b>「签 / 谈 / 不签」</b> 的结论、逐条风险与法条依据，
+        以及一份能直接拿去谈的清单。每条风险都能点回原文，改一个事实，结论跟着变。
+      </div>
+      <div class="cover-tags">
+        <span>条款逐条定位</span><span>结论有据可查</span><span>报告可打印带走</span>
+      </div>
+    </div>
+
+    <div class="cover-card">
+      <div class="cc-head"><span>体检报告 / 供应商采购</span><span class="cc-demo">DEMO</span></div>
+      <div class="cc-verdict">
+        <div class="cc-big">不签</div>
+        <small>置信度 90% · 演示数据已脱敏</small>
+      </div>
+      <div class="cc-rows">
+        <div class="cc-row"><span>9 条高风险条款</span><b>预付款 30%</b></div>
+        <div class="cc-row"><span>未约定交付日期</span><b>以乙方通知为准</b></div>
+        <div class="cc-row"><span>争议解决</span><b>深圳仲裁</b></div>
+        <div class="cc-row"><span>主体核查</span><b>2 条未履行被执行</b></div>
+      </div>
+      <div class="cc-foot"><span>合同总价 ¥68,000</span><span>打款前 4 小时</span></div>
+    </div>
+  </div>
+
+  <div class="cover-meta">
+    <span>ZJU HACKATHON · 2026.10</span>
+    <span>modelscope.cn/studios/Shuuyou/signlens</span>
+  </div>
+</section>
+
+<!-- 02 · 一个具体的人 -->
+<section class="slide">
+  <div class="eyebrow"><span class="num">02</span> 一个具体的人</div>
+  <h2>20400 元，明天上午打出去</h2>
+  <p class="lede">小周，大三，做校园文创。这是他第一次自己签采购合同——不是第一次听说要小心，是第一次没人帮他把 9 条读完。</p>
+
+  <div class="body">
+    <div class="two-col">
+      <div class="col-l">
+        <div class="block-title">那一晚</div>
+        <ul class="tl">
+          <li><time>21:40</time><p>收到对方发来的合同 PDF，9 条，651 字。他先翻到总价：68000。</p></li>
+          <li><time>22:15</time><p>在群里问「这条能签吗」，两个人回了「应该没事吧」。</p></li>
+          <li><time>23:20</time><p>对方补一句：「合同就是走个流程，不用改。」</p></li>
+          <li><time>次日 09:00</time><p>约定打款 20400 元，合同总价 30%。</p></li>
+        </ul>
+        <div class="also">
+          <div class="h">同一套流程，另外两个演示案例</div>
+          <div class="r"><span>校园培训贷：保底就业 + 不退费</span><i>不签</i></div>
+          <div class="r"><span>长租公寓：条款基本正常，押金略高</span><i class="ok">建议签</i></div>
+        </div>
+      </div>
+
+      <div class="col-r">
+        <div class="block-title">他看懂的，和他没接住的</div>
+        <div class="knows">
+          <div><b>8000 套</b><span>数量</span></div>
+          <div><b>8.5 元</b><span>单价</span></div>
+          <div><b>68000</b><span>总价</span></div>
+          <div><b>30%</b><span>预付比例</span></div>
+        </div>
+        <ul class="miss">
+          <li>
+            <div class="t"><span class="num">01</span>没有交付日期</div>
+            <div class="q">第三条只写「尽快安排生产，具体交货时间<b>以乙方通知为准</b>」，并声明不承担排产、原材料涨价、物流延误的延期责任。</div>
+          </li>
+          <li>
+            <div class="t"><span class="num">02</span>24 小时验收</div>
+            <div class="q">第四条：「收货后 24 小时内完成验收，<b>逾期未提出视为验收合格</b>」，合格后不得再以质量问题主张退货或减款。</div>
+          </li>
+          <li>
+            <div class="t"><span class="num">03</span>违约金差 20 倍</div>
+            <div class="q">他逾期按<b>日千分之十</b>，对方逾期按<b>日万分之五</b>；他取消订单，已付款项全部作违约金。</div>
+          </li>
+          <li>
+            <div class="t"><span class="num">04</span>争议在深圳仲裁</div>
+            <div class="q">异地仲裁，仲裁费、律师费、差旅费由败诉方承担——<b>先算清楚打这一场要花多少</b>。</div>
+          </li>
+          <li>
+            <div class="t"><span class="num">05</span>对方是谁，他没查</div>
+            <div class="q">2 条未履行被执行记录，执行标的合计 60.9 万；1 条行政处罚 8 万；注册资本 100 万，<b>实缴 0</b>，参保 3 人。</div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="quotebar">
+      9 条里有 5 条直接决定这 20400 能不能回来。<b>他不是不谨慎，是没人替他把这 9 条读一遍。</b>
+    </div>
+  </div>
+
+  <div class="foot"><span>SIGNLENS · 签前体检</span><span class="pg">02 / 12</span></div>
+</section>
+
+<!-- 03 · 代价与数据 -->
+<section class="slide">
+  <div class="eyebrow"><span class="num">03</span> 代价</div>
+  <h2>一次签错的代价，不会只落在合同上</h2>
+
+  <div class="body">
+    <div class="stat-row">
+      <div class="stat-big">1270<small>万人</small></div>
+      <div class="stat-note">2025 届高校毕业生规模（教育部）。每年新进入「第一次自己签合同」的人数——不是市场规模的推导，是分母。</div>
+    </div>
+
+    <div class="cost-cards">
+      <div class="cost">
+        <div class="tag">供应商预付款</div>
+        <div class="fig r">20400 元</div>
+        <div class="sub">总价的 30%，一次性、无担保</div>
+        <p>钱先到对方账上，交付日期在对方嘴里。合同里没有一条写着「什么时候必须交货」，也就没有一条能主张逾期违约。</p>
+        <div class="flag">来源：演示案例（已脱敏）</div>
+      </div>
+      <div class="cost">
+        <div class="tag">校园培训贷</div>
+        <div class="fig">还款人是自己</div>
+        <div class="sub">两份合同，签完才看清</div>
+        <p>培训合同写「不退款」，退费口径只在销售口头上；贷款合同是另一份，还款义务独立成立。想退出时，机构说「按合同办」，金融机构说「按期还款」。</p>
+        <div class="flag">规模数字待验证（样本不足，不做估算）</div>
+      </div>
+      <div class="cost">
+        <div class="tag">租房押金</div>
+        <div class="fig">押一付三</div>
+        <div class="sub">退押写在 30 个工作日之后</div>
+        <p>验收标准放在没给你的附件里；退押条件写「房屋及设施无损坏」，谁认定、按什么标准认定，合同没说。争议解决一句「协商不成另议」。</p>
+        <div class="flag">规模数字待验证（样本不足，不做估算）</div>
+      </div>
+    </div>
+
+    <div class="common">
+      <div class="k">共同结构</div>
+      <div class="i"><b>01 钱先出去</b>预付、贷款、押金，都是你先履约。</div>
+      <div class="i"><b>02 义务由对方定义</b>交付、退费、验收标准，写在对方愿意写的地方。</div>
+      <div class="i"><b>03 维权成本高于争议金额</b>去深圳仲裁追回两万块，你打不起。</div>
+    </div>
+
+    <div class="caliber">
+      <b>数字口径：</b>1270 万为教育部公布的 2025 届高校毕业生规模，可直接引用。培训贷与押金两类，我们目前只有案例、没有可信的规模统计，
+      因此标注「待验证」——不用别人的数字撑自己的论点。演示报告中的金额、公司、执行记录均来自脱敏演示库。
+    </div>
+  </div>
+
+  <div class="foot"><span>SIGNLENS · 签前体检</span><span class="pg">03 / 12</span></div>
+</section>
+
+<!-- 04 · 洞察 -->
+<section class="slide">
+  <div class="eyebrow"><span class="num">04</span> 洞察</div>
+  <h2>数据层已经饱和，判断层还是空白</h2>
+  <p class="lede">查一家公司，现在是免费的、秒级的。难的不是查到它，是查完之后仍然不知道这单该不该做。</p>
+
+  <div class="body">
+    <div class="three">
+      <div>
+        <h3>已经饱和</h3>
+        <div class="who">企查查 · 天眼查 · 爱企查 · 国家企业信用信息公示系统</div>
+        <p class="ask">回答：<b>这家公司是什么。</b><br><span class="gap">登记、股权、司法、经营异常，一屏给全。付费习惯已经养成。</span></p>
+      </div>
+      <div>
+        <h3>也不缺</h3>
+        <div class="who">通用大模型 · 法律科普号 · 合同模板站</div>
+        <p class="ask">回答：<b>一般情况该怎么办。</b><br><span class="gap">能读、能写、能给建议。但不会指到第几条，不给置信度，也不为这句话负责。</span></p>
+      </div>
+      <div class="last">
+        <h3>空着的是</h3>
+        <div class="who">你、这份合同、这笔钱、这个时间点</div>
+        <p class="ask">回答：<b>以你的情况，这单该不该做。</b><br><span class="gap">哪几条会坑你，什么条件下可以签，改哪个事实结论会翻转。</span></p>
+      </div>
+    </div>
+
+    <div class="qband">
+      <div class="q">同一个问题，三种回答 —— 「这家公司能合作吗？我明天要打 20400。」</div>
+      <div class="qa">
+        <div>
+          <div class="who">企查查 / 天眼查</div>
+          <p>注册资本 100 万，存续，2 条被执行记录，1 条行政处罚。</p>
+          <em>事实给全了，问题没答。</em>
+        </div>
+        <div>
+          <div class="who">通用大模型</div>
+          <p>建议谨慎，注意核实对方履约能力，必要时咨询专业律师。</p>
+          <em>正确，但明天早上用不上。</em>
+        </div>
+        <div class="us">
+          <div class="who">SIGNLENS</div>
+          <p>不签。预付款 30% 无担保、无交付日期、对方 2 条未履行被执行。改这三条，可以谈。</p>
+          <em>这是判断：有结论，有条件，有改口线。</em>
+        </div>
+      </div>
+    </div>
+
+    <div class="insight-bar">
+      <b>数据可以买，判断不能。</b>
+      <span>所以我们不做查询工具，做签前的那一次判断</span>
+    </div>
+  </div>
+
+  <div class="foot"><span>SIGNLENS · 签前体检</span><span class="pg">04 / 12</span></div>
+</section>
+
+<!-- 05 · 三步方案 -->
+<section class="slide">
+  <div class="eyebrow"><span class="num">05</span> 方案</div>
+  <h2>读条款 → 核主体 → 出判断</h2>
+  <p class="lede">三步都跑在本地。<strong>没有 API key、没有外网也能出完整报告</strong>——这是刻意的：签合同的人常常在没网的地方、临打款前十分钟才想起来要看。</p>
+
+  <div class="body">
+    <div class="steps">
+      <div class="step">
+        <div class="n">01 / 读</div>
+        <h3>把合同切成条款</h3>
+        <ul>
+          <li>输入：合同全文 + 对方公司名，可选聊天记录</li>
+          <li>切成 <b>17 条</b>，每条带原文起止位置，报告里点一下就回到原文</li>
+          <li>聊天记录单独过一遍：找口头承诺与书面条款的<b>落差</b>（「不用改」正是落差本身）</li>
+        </ul>
+      </div>
+      <div class="step">
+        <div class="n">02 / 核</div>
+        <h3>核对方是谁</h3>
+        <ul>
+          <li>登记状态、成立时间、注册资本与实缴、参保人数</li>
+          <li>被执行、行政处罚、涉诉——每条带 <b>retrieved_at</b></li>
+          <li><b>5 个公开源</b>：gsxt、zxgk、wenshu、creditchina、flk.npc.gov.cn</li>
+          <li>查不到就写「未检索到」，不补全</li>
+        </ul>
+      </div>
+      <div class="step">
+        <div class="n">03 / 判</div>
+        <h3>给结论和改法</h3>
+        <ul>
+          <li><b>40 条</b>硬规则 × <b>8 部</b>法律 <b>30 组</b>法条</li>
+          <li>输出：签 / 谈 / 不签 + 置信度 + 每个风险的「为什么、法条、改法」</li>
+          <li>谈判单 P0/P1 共 8 条，可打印成一页带走</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="io">
+      <div class="io-card">
+        <div class="lbl">输入</div>
+        <div class="io-row"><b>公司</b><span>杭州云采供应链有限公司</span></div>
+        <div class="io-row"><b>合同</b><span>9 条 / 651 字，粘贴即可</span></div>
+        <div class="io-row"><b>聊天</b><span>3 条：「合同就是走个流程，不用改」</span></div>
+        <div class="io-row"><b>你的情况</b><span>创业者 · 68000 · 待付预付款</span></div>
+      </div>
+      <div class="io-arrow">→</div>
+      <div class="io-card out">
+        <div class="lbl">输出</div>
+        <div class="io-row"><b>结论</b><span>不签 · 置信度 90%</span></div>
+        <div class="io-row"><b>风险</b><span>12 条（9 高 / 3 中），每条带改法</span></div>
+        <div class="io-row"><b>主体</b><span>5 项事实 · 4 个来源 · 带检索时间</span></div>
+        <div class="io-row"><b>交付物</b><span>谈判单 8 条（P0 / P1）· 可打印 PDF</span></div>
+      </div>
+    </div>
+
+    <div class="pipe">
+      <code>parse</code><span class="arrow">→</span><code>company</code><span class="arrow">→</span><code>rules</code><span class="arrow">→</span><code>decide</code><span class="arrow">→</span><code>report</code>
+      <span class="note">纯本地、确定性、可复现；LLM 只做可选增强，不做唯一依据</span>
+    </div>
+  </div>
+
+  <div class="foot"><span>SIGNLENS · 签前体检</span><span class="pg">05 / 12</span></div>
+</section>
+
+<!-- 06 · Demo -->
+<section class="slide">
+  <div class="eyebrow"><span class="num">06</span> DEMO</div>
+  <h2>从粘贴到 PDF，一次跑完</h2>
+
+  <div class="body">
+    <div class="shots">
+      <figure class="shot">
+        <div class="frame h-big"><img src="../.shots/ui_report_top.png" alt="报告结论页"></div>
+        <figcaption><b>结论横幅</b> 不签 · 置信度 90% · 9 高 / 3 中；下面「继续推进的前提」就是可以照着谈的三句话。</figcaption>
+      </figure>
+      <figure class="shot">
+        <div class="frame h-big"><img src="../.shots/ui_report_risks.png" alt="风险清单与主体核查"></div>
+        <figcaption><b>风险清单 + 主体核查</b> 每条：等级 / 为什么 / 对应条款原文 / 改法 / 法条；右栏被执行、行政处罚、实缴 0、参保 3 人。</figcaption>
+      </figure>
+    </div>
+
+    <div class="reel">
+      <div><b>0:00</b>钩子：明天要打 20400</div>
+      <div><b>0:20</b>输入：651 字 + 聊天记录</div>
+      <div><b>0:50</b>分析：五个阶段依次亮起</div>
+      <div><b>1:20</b>结论：不签 · 90%</div>
+      <div><b>1:50</b>推演：勾选让步，结论翻转</div>
+      <div><b>2:30</b>交付：一页谈判单 + 打印</div>
+    </div>
+  </div>
+
+  <div class="foot"><span>截图来自本地 DEMO_MODE：无外网、无 API key，单容器运行</span><span class="pg">06 / 12</span></div>
+</section>
+
+<!-- 07 · 条款 → 法条 → 结论 -->
+<section class="slide">
+  <div class="eyebrow"><span class="num">07</span> 证据链</div>
+  <h2>每条风险，都能顺着摸回原文</h2>
+
+  <div class="body">
+    <div class="anat">
+      <div class="chain">
+        <div class="link">
+          <div class="rail"><span>条款<b>原文</b></span></div>
+          <div class="body">
+            <div class="quoted">第二条 付款方式：合同签订当日甲方支付合同总价 30% 的预付款人民币 <mark>20400 元</mark>，余款于收货后 30 日内付清。</div>
+          </div>
+        </div>
+        <div class="link">
+          <div class="rail"><span>为什么<b>判断</b></span></div>
+          <div class="body">
+            <p>预付款比例越高，对方不履约或跑路时资金回收越难。先履行方虽可依不安抗辩权中止履行，但需要确切证据，实操门槛高——钱已经在对方账上时，「中止」已经没有意义。</p>
+          </div>
+        </div>
+        <div class="link">
+          <div class="rail"><span>法条<b>依据</b></span></div>
+          <div class="body">
+            <div class="law"><b>《中华人民共和国民法典》第五百二十七条 <span class="ex">条文摘要</span></b>应当先履行债务的当事人，有确切证据证明对方经营状况严重恶化、转移财产、丧失商业信誉等情形，可以中止履行。</div>
+          </div>
+        </div>
+        <div class="link">
+          <div class="rail"><span>结论<b>改法</b></span></div>
+          <div class="body">
+            <div class="sugg">高风险 · 规则置信度 90% → 压到 30% 以内；优先改「交付 / 验收后付款」。必须预付时：对公账户、履约担保或预付款保函，并写明退款路径与时限。</div>
+          </div>
+        </div>
+        <div class="link">
+          <div class="rail"><span>怎么谈<b>话术</b></span></div>
+          <div class="body">
+            <div class="script">「预付款我们按 10% 走，尾款验收合格后 7 天内付清；交货日期和验收标准，麻烦写进补充协议。」<i>直接进谈判单，照着念</i></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="anat-right">
+        <ul class="hard">
+          <li><b>可回指</b><span>结论落到条款 ID 与字符偏移量，不是「合同里好像有写」。</span></li>
+          <li><b>可查证</b><span>法条带版本与 source_url，主体事实带 retrieved_at。</span></li>
+          <li><b>可反驳</b><span>每条风险带置信度；改一个事实，结论必须跟着改，否则报告自相矛盾。</span></li>
+          <li><b>可执行</b><span>输出落到一页谈判单：P0 / P1 分级、能打印、能直接带去见对方。</span></li>
+        </ul>
+        <div class="verdict-chip">报告首页写明：不构成法律意见</div>
+        <p class="hard-note">这 40 条规则是人工写的，不是模型猜的。每条都能指到法条原文与链接——所以它能被审、被改、被追责。</p>
+      </div>
+    </div>
+
+    <div class="foot-notes">
+      <div class="limit"><b>一条边界</b>模型可以帮我们找措辞，但风险等级、置信度、法条引用必须来自可审的规则。模型改坏了哪一条，测试会红。</div>
+
+      <div class="more">
+        <div class="h">同一份合同，另外三条</div>
+        <div class="r"><b>第三条 · 交付时间</b>未约定交付日期 <i>民法典 511 条第（四）项</i></div>
+        <div class="r"><b>第四条 · 验收</b>24 小时后视为合格 <i>民法典 622 条</i></div>
+        <div class="r"><b>第六条 · 争议解决</b>约定异地仲裁 <i>仲裁法 16 条</i></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot"><span>SIGNLENS · 签前体检</span><span class="pg">07 / 12</span></div>
+</section>
+
+<!-- 08 · 结论翻转 -->
+<section class="slide dark">
+  <div class="eyebrow"><span class="num">08</span> 现场可验证</div>
+  <h2>改一个事实，结论必须跟着变</h2>
+  <p class="lede">同一份合同，对方肯让哪几步，结论就该走到哪一步。这是评委可以当场动手改的部分。</p>
+
+  <div class="body">
+    <div class="wi">
+      <div class="wi-left">
+        <div class="wi-item on">
+          <div class="box"></div>
+          <div class="txt"><b>对方书面补充交货日期与验收标准</b><i>把「尽快交付」改成具体日期，并约定逾期每日 0.5% 的违约金。</i></div>
+          <div class="rel">缓释 3 项</div>
+        </div>
+        <div class="wi-item on">
+          <div class="box"></div>
+          <div class="txt"><b>预付款降至 10%，尾款验收后支付</b><i>把 30% 压到 10%，余款在货物验收合格后支付。</i></div>
+          <div class="rel">缓释 3 项</div>
+        </div>
+        <div class="wi-item">
+          <div class="box"></div>
+          <div class="txt"><b>争议解决改到公司所在地法院</b><i>删除异地仲裁条款，改为我方所在地有管辖权的法院。</i></div>
+          <div class="rel">缓释 2 项</div>
+        </div>
+        <div class="wi-item">
+          <div class="box"></div>
+          <div class="txt"><b>违约金上限压到合同总额的 10%</b><i>删除「日 1%」这类无上限条款，统一设置违约金总额上限。</i></div>
+          <div class="rel">缓释 4 项</div>
+        </div>
+        <div class="wi-item">
+          <div class="box"></div>
+          <div class="txt"><b>解除 / 退款改为按履行比例结算</b><i>未履行部分应退还；可扣除已实际发生且可证明的成本，并列明计算依据。</i></div>
+          <div class="rel">缓释 2 项</div>
+        </div>
+        <div class="wi-foot">每个让步项都对应到具体条款与法条——报告里点一下，就能看到它会缓释哪几条风险。</div>
+      </div>
+
+      <div class="wi-panel">
+        <div class="wi-label">当前结论</div>
+        <div class="wi-verdict"><div class="wi-big">不签</div><span>建议不签 · 置信度 90%</span></div>
+        <div class="wi-table">
+          <div class="wi-row"><span>剩余高风险</span><b>9</b></div>
+          <div class="wi-row"><span>剩余中风险</span><b>3</b></div>
+          <div class="wi-row"><span>风险敞口</span><b>100%</b></div>
+          <div class="wi-row"><span>已勾选让步</span><b class="dim">0 / 5</b></div>
+        </div>
+        <div class="wi-note">全部勾选后，结论翻转为「可谈」，风险卡片同步标记「推演中已缓释」。推演在前端按权重即时重算，不再请求后端——所以可以现场改给你看。</div>
+      </div>
+    </div>
+
+    <div class="flip-band">
+      <div>
+        <b><code>change_my_mind</code> 是一个字段，不是一句台词</b>
+        <p>报告数据结构里，Decision 带 reasons / conditions / change_my_mind 三个数组：结论、前提、改口条件都能被程序读，也能被评委当场验。</p>
+      </div>
+      <div>
+        <b>口头答应不算数</b>
+        <p>推演只在「让步写进补充协议」时成立。所以我们交付的是一页谈判单，不是一句「应该没事」。</p>
+      </div>
+      <div>
+        <b>边界</b>
+        <p>这是加权推演，不是承诺。对方答不答应是另一回事；我们的作用是告诉你哪几条最值得争、争到哪一步就够了。</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="foot"><span>SIGNLENS · 签前体检</span><span class="pg">08 / 12</span></div>
+</section>
+
+<!-- 09 · 竞争分层 -->
+<section class="slide">
+  <div class="eyebrow"><span class="num">09</span> 位置</div>
+  <h2>我们不在数据层，也不在律所的位置上</h2>
+
+  <div class="body">
+    <table class="cmp">
+      <thead>
+        <tr><th style="width:112px">层</th><th style="width:282px">谁在做</th><th style="width:322px">他们回答的问题</th><th>我们和他们的关系</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>数据查询</td>
+          <td>企查查、天眼查、爱企查<span class="src">国家企业信用信息公示系统</span></td>
+          <td>这家公司登记、股权、司法、经营异常是什么样</td>
+          <td>上游。我们调用公开源，不重复采集，也不做第二个查询框</td>
+        </tr>
+        <tr>
+          <td>通用大模型</td>
+          <td>ChatGPT、豆包、Kimi 等<span class="src">加上各类合同审查插件</span></td>
+          <td>帮你读完，给一段听起来合理的建议</td>
+          <td>工具。我们用它做增强，但结论必须由规则和法条支撑，不由它下判断</td>
+        </tr>
+        <tr>
+          <td>法律服务</td>
+          <td>律所、企业法务、法律援助</td>
+          <td>这单怎么谈、怎么打、怎么诉</td>
+          <td>下游。我们筛出真正需要律师的那一小部分，并把材料整理好交过去</td>
+        </tr>
+        <tr>
+          <td>内容与模板</td>
+          <td>合同模板站、法律科普号</td>
+          <td>给你一份「标准合同」</td>
+          <td>互补。我们评的是你手上这一份，不是别人写的范本</td>
+        </tr>
+        <tr class="us">
+          <td>签前判断</td>
+          <td>SignLens</td>
+          <td>以你的身份、金额、阶段：这单该不该做，哪几条会坑你，什么会改变结论</td>
+          <td>结论可回指条款、可追到法条、可被一个事实推翻</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="caliber" style="border-top:none;padding-top:0">
+      <b>不做的三件事：</b>不出具法律意见、不做诉讼代理、不承诺结果。报告首页与页脚都写明这一点。
+    </div>
+
+    <div class="why-now">
+      <div class="k">为什么是现在</div>
+      <div class="i"><b>数据免费了</b>公开源可查，数据不再是壁垒，「读完之后的判断」才是。</div>
+      <div class="i"><b>成本降下来了</b>读一份合同从「预约律师一小时」变成「打开网页，等 30 秒」。</div>
+      <div class="i"><b>需求被摊开了</b>1270 万人每年第一次签合同，其中没人替他们看的那部分，就是入口。</div>
+    </div>
+  </div>
+
+  <div class="foot"><span>SIGNLENS · 签前体检</span><span class="pg">09 / 12</span></div>
+</section>
+
+<!-- 10 · 商业模式 -->
+<section class="slide">
+  <div class="eyebrow"><span class="num">10</span> 商业模式</div>
+  <h2>谁付钱，为什么在这一刻付</h2>
+
+  <div class="body">
+    <div class="prices">
+      <div class="price">
+        <div class="amt">99<small>元 / 份</small></div>
+        <div class="nm">单份体检</div>
+        <p>完整报告 + 一页谈判单，PDF 可打印。买的是一次打款前的决定。</p>
+        <ul class="incl">
+          <li>12 条风险清单，每条带改法</li>
+          <li>谈判单 8 条（P0 / P1）</li>
+          <li>可打印 PDF，离线可看</li>
+        </ul>
+        <div class="fit">适合：第一次签采购、租房、培训合同</div>
+      </div>
+      <div class="price hot">
+        <div class="badge">设计伙伴</div>
+        <div class="amt">199<small>元</small></div>
+        <div class="nm">体检 + 30 分钟解读</div>
+        <p>有人陪你把最该争的 3 条过一遍，并给出可以照着念的谈判话术。</p>
+        <ul class="incl">
+          <li>99 元档全部内容</li>
+          <li>30 分钟通话，逐条过</li>
+          <li>3 条话术稿，改成你的口气</li>
+        </ul>
+        <div class="fit">适合：金额过万、已经付了定金</div>
+      </div>
+      <div class="price">
+        <div class="amt">299<small>元 / 学期</small></div>
+        <div class="nm">学期卡</div>
+        <p>不限次体检 + 合同存档 + 改稿复检。一个团队一学期签的不止一份。</p>
+        <ul class="incl">
+          <li>不限次体检</li>
+          <li>合同存档与版本对比</li>
+          <li>对方改稿后再检一次</li>
+        </ul>
+        <div class="fit">适合：学生社团、校园创业团队</div>
+      </div>
+    </div>
+
+    <div class="base-strip">
+      <div class="k">基地订阅</div>
+      <p>高校创业学院、孵化器、众创空间按年订阅：学生席位 + 批量看板 + 月度风险简报（这个月学生都在签什么、踩了什么）。对基地来说，这是能写进年度总结的创业服务数据。</p>
+      <div class="price-tag">按规模议价</div>
+    </div>
+
+    <div class="unit">
+      <div class="lab">单位经济<br>（待实测）</div>
+      <div><b>客单价</b><span>99 / 199 / 299，假设价，未做价格测试</span></div>
+      <div><b>单次可变成本</b><span>演示模式 ≈ 0；接 LLM 后按 token 计</span></div>
+      <div><b>获客</b><span>校园渠道 + 基地推荐，成本待验证</span></div>
+      <div><b>复购假设</b><span>一学期 1.4 份，纯假设，不作承诺</span></div>
+    </div>
+
+    <div class="price-note">
+      <b>定价纪律：</b>99 / 199 / 299 是假设价，还没做过价格测试；基地订阅目前只有 2 个在谈、没有成交，标注「设计伙伴进行中」。
+      在对 20 个真实付费用户复过盘之前，我们不对外宣称转化率与毛利。
+    </div>
+  </div>
+
+  <div class="foot"><span>SIGNLENS · 签前体检</span><span class="pg">10 / 12</span></div>
+</section>
+
+<!-- 11 · 90 天 -->
+<section class="slide">
+  <div class="eyebrow"><span class="num">11</span> 落地</div>
+  <h2>90 天，只做三件事</h2>
+  <p class="lede">从 63 小时 MVP 到能收钱的产品，中间差的不是功能，是样本和误报率。</p>
+
+  <div class="body">
+    <div class="plan">
+      <div class="phase">
+        <div class="d">D1 — D30</div>
+        <h3>规则与样本</h3>
+        <ul>
+          <li>规则库从 <b>40 条扩到 80 条</b>，优先补租房、培训、劳务三类</li>
+          <li>收 <b>50 份脱敏合同</b>：3 所高校 + 2 个孵化器，三类各 15 份</li>
+          <li>人工标注误报，目标高风险误报 <b>&lt; 15%</b>（目标值，待验证）</li>
+          <li>把「未覆盖」做成报告里的显式字段，而不是沉默</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="d">D31 — D60</div>
+        <h3>第一个付费闭环</h3>
+        <ul>
+          <li>1 个基地试点订阅落地，跑通席位与看板</li>
+          <li>99 元档上线：支付、出报告、发 PDF 全链路</li>
+          <li>出第一份月度风险简报，交给基地发学生</li>
+          <li>接第一个 199 解读档，验证「有人陪着过」值不值 100 块</li>
+        </ul>
+      </div>
+      <div class="phase">
+        <div class="d">D61 — D90</div>
+        <h3>复盘与取舍</h3>
+        <ul>
+          <li>回访：多少份报告真的改变了签约决定（自报 + 合同复检）</li>
+          <li>算一遍获客成本与复购，决定 199 解读档做不做</li>
+          <li>不做 App、不做小程序，Web 足够</li>
+          <li>定下一版边界：只做签前，不做履约中监控</li>
+        </ul>
+      </div>
+    </div>
+
+    <div>
+      <div class="tbar">
+        <div><b>D1–30</b>规则与样本</div>
+        <div><b>D31–60</b>付费闭环</div>
+        <div><b>D61–90</b>复盘</div>
+      </div>
+      <div class="metrics">
+        <div class="lab">只看四个指标</div>
+        <div class="m"><b>报告打开率</b>出了有没有人看</div>
+        <div class="m"><b>谈判单使用率</b>看完有没有拿去谈</div>
+        <div class="m"><b>结论翻转率</b>推演有没有被真的用</div>
+        <div class="m"><b>退款率</b>失望的人有多少</div>
+      </div>
+    </div>
+
+    <div class="risk-block">
+      <div class="risks">
+        <div><span class="k">风险之一</span><b>样本拿不到</b>　先用公开裁判文书 + 同学授权合同（脱敏），并允许用户自行粘贴，样本不依赖机构。</div>
+        <div><span class="k">风险之二</span><b>误报率高</b>　先做窄场景（预付款采购 / 培训 / 租房），宁可少判，也不硬判。</div>
+        <div><span class="k">风险之三</span><b>基地签约慢</b>　先免费跑一学期，用报告数据换续约，不赌一次性大单。</div>
+      </div>
+      <div class="plan-note">以上是计划，不是结果。现在能拿出来的只有可运行的 Demo 和 3 个脱敏案例，其余都在 D1 之后。</div>
+    </div>
+  </div>
+
+  <div class="foot"><span>SIGNLENS · 签前体检</span><span class="pg">11 / 12</span></div>
+</section>
+
+<!-- 12 · 团队与边界 -->
+<section class="slide">
+  <div class="eyebrow"><span class="num">12</span> 团队与边界</div>
+  <h2>我们会做什么，不做什么</h2>
+
+  <div class="body">
+    <div class="team-wrap">
+      <div class="tm">
+        <div class="block-title">团队 · 4 人</div>
+        <ul class="roles">
+          <li><span>后端</span><b>流水线与规则引擎</b> <i>FastAPI · 确定性流水线</i></li>
+          <li><span>前端</span><b>报告与打印</b> <i>条款高亮 · 推演 · PDF</i></li>
+          <li><span>规则</span><b>条款与法条整理</b> <i>40 条规则 · 30 组法条</i></li>
+          <li><span>产品</span><b>场景与访谈</b> <i>学生创业者 · 基地</i></li>
+        </ul>
+        <div class="team-note">
+          姓名与背景见附页（待补）。法条审校：执业律师（洽谈中，未签约）。
+          63 小时内完成从 0 到可演示：后端流水线、前端流程、40 条规则库、容器部署与冒烟测试。
+        </div>
+      </div>
+
+      <div class="bounds">
+        <div class="block-title">边界 · 写进产品里，不只是写进 PPT</div>
+        <ul>
+          <li><span class="mk">—</span><div><b>不出具法律意见。</b>报告首页与页脚固定声明；结论措辞是「建议」，不是「应当」。</div></li>
+          <li><span class="mk">—</span><div><b>不做诉讼代理、不承诺结果。</b>没有「保证胜诉」「一定追回」这类话术。</div></li>
+          <li><span class="mk">—</span><div><b>不采集非公开数据。</b>只用官方公开源；演示库全部脱敏，不把合同传到未经同意的第三方。</div></li>
+          <li><span class="mk">—</span><div><b>查不到就说查不到。</b>「未检索到」是一个合法结论，不用推测填空。</div></li>
+          <li><span class="mk">—</span><div><b>有覆盖缺口时显式标注。</b>规则没覆盖的条款类型，报告写「未覆盖，建议人工复核」，不硬判。</div></li>
+          <li><span class="mk">—</span><div><b>法条有时效。</b>每条法条带版本与复核日期，过期即下线，不用旧条文下结论。</div></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="why-us">
+      <div class="k">为什么是我们</div>
+      <div class="i"><b>已经跑通过一遍</b>63 小时做出可演示的完整链路，不是概念稿。</div>
+      <div class="i"><b>三件事都有人负责</b>流水线、报告排版、条款与法条，各有人能从早改到晚。</div>
+      <div class="i"><b>换场景的成本低</b>规则库是数据，不是代码；下一个场景改 JSON 就能上。</div>
+    </div>
+
+    <div class="closing">
+      <div class="line">数据可以买，<em>判断不能。</em></div>
+      <div class="meta">SignLens · 签前体检<br>DEMO：modelscope.cn/studios/Shuuyou/signlens · 本地 DEMO_MODE=true</div>
+    </div>
+  </div>
+
+  <div class="foot"><span>SIGNLENS · 签前体检</span><span class="pg">12 / 12</span></div>
+</section>
+
+<div class="bar"><button onclick="window.print()">打印 / 导出 PDF</button></div>
+
+</body>
+</html>
