@@ -8,6 +8,9 @@ interface AnalyzingProps {
   jobId: string
   caseId: string
   companyName: string
+  syncMode?: boolean
+  syncReport?: Report | null
+  syncError?: string | null
   onDone: (report: Report | null) => void
   onRetry: () => Promise<void>
   onEdit: () => void

@@ -84,6 +84,14 @@ export function analyzeCase(caseId: string): Promise<AnalyzeResponse> {
   return postJson<AnalyzeResponse>(`/api/cases/${encodeURIComponent(caseId)}/analyze`)
 }
 
+export function analyzeNow(input: CaseInput): Promise<Report> {
+  return postJson<Report>('/api/analyze', input)
+}
+
+export function analyzeDemoNow(demoId: string): Promise<Report> {
+  return postJson<Report>(`/api/demo/${encodeURIComponent(demoId)}/analyze`)
+}
+
 export function getJob(jobId: string): Promise<Job> {
   return request<Job>(`/api/jobs/${encodeURIComponent(jobId)}`, { cache: 'no-store' })
 }

@@ -59,6 +59,8 @@ export default function App() {
   const [intake, setIntake] = useState<CaseInput | null>(null)
   const [caseId, setCaseId] = useState<string | null>(null)
   const [jobId, setJobId] = useState<string | null>(null)
+  const [syncReport, setSyncReport] = useState<Report | null>(null)
+  const [syncError, setSyncError] = useState<string | null>(null)
   const [report, setReport] = useState<Report | null>(null)
   const [reportError, setReportError] = useState<string | null>(null)
   const [loadingReport, setLoadingReport] = useState(false)
@@ -131,25 +133,31 @@ export default function App() {
   )
 
   const handleRetryAnalysis = useCallback(async () => {
-    if (!caseId) throw new Error('缺少案例编号，无法重新分析。')
-    const analyzed = await api.analyzeCase(caseId)
-    if (!analyzed?.job_id) throw new Error('服务未返回任务编号，请重试。')
-    setJobId(analyzed.job_id)
-  }, [caseId])
+    if (!intake) throw new Error('缺少合同内容，无法重新分析。')
+    setSyncReport(null)
+    setSyncError(null)
+    setJobId(null)
+    const result = await api.analyzeNow(intake)
+    const normalized = normalizeReport(result)
+    setCaseId(normalized.case_id)
+    setSyncReport(normalized)
+  }, [intake])
 
   const handleStart = async (input: CaseInput) => {
     setHomeError(null)
     setReportError(null)
-    const created = await api.createCase(input)
-    if (!created?.case_id) throw new Error('服务未返回案例编号，请重试。')
-    setCaseId(created.case_id)
-    const analyzed = await api.analyzeCase(created.case_id)
-    if (!analyzed?.job_id) throw new Error('服务未返回任务编号，请重试。')
-    setJobId(analyzed.job_id)
-    setIntake(input)
     setReport(null)
+    setSyncReport(null)
+    setSyncError(null)
+    setJobId(null)
+    setCaseId(null)
+    setIntake(input)
     setPrefilled(false)
-    setView('analyzing')
+    const result = await api.analyzeNow(input)
+    const normalized = normalizeReport(result)
+    setCaseId(normalized.case_id)
+    setReport(normalized)
+    setView('report')
   }
 
   const handleDemoSelect = async (demo: DemoCase) => {
@@ -257,11 +265,14 @@ export default function App() {
           />
         )}
 
-        {view === 'analyzing' && caseId && jobId && (
+        {view === 'analyzing' && intake && (
           <Analyzing
-            jobId={jobId}
-            caseId={caseId}
-            companyName={intake?.company.name ?? '对方主体'}
+            jobId={jobId ?? ''}
+            caseId={caseId ?? '同步分析'}
+            companyName={intake.company.name || '对方主体'}
+            syncMode
+            syncReport={syncReport}
+            syncError={syncError}
             onDone={handleJobDone}
             onRetry={handleRetryAnalysis}
             onEdit={goEdit}

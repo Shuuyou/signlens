@@ -4,6 +4,7 @@ import logging
 import threading
 
 from app.core import store
+from app.models import CaseInput, Report
 
 log = logging.getLogger(__name__)
 
@@ -29,6 +30,31 @@ def start_analysis(case_id: str, job_id: str) -> threading.Thread:
 
 def _set_stage(job_id: str, stage: str, progress: int) -> None:
     store.update_job(job_id, status="running", stage=stage, progress=progress)
+
+
+def analyze_sync(case_id: str, case: CaseInput) -> Report:
+    """Run the whole pipeline in one request (serverless-safe, no cross-instance job state)."""
+    from app.services.clauses import extract_clauses
+    from app.services.company import get_company_evidence
+    from app.services.decision import decide
+    from app.services.report import build_report, render_html
+    from app.services.rules import match_risks
+
+    clauses = extract_clauses(case.contract_text)
+    company = get_company_evidence(case.company.name)
+    risks = match_risks(clauses, company)
+    decision = decide(clauses, risks, company)
+    report = build_report(case_id, case, company, clauses, risks, decision)
+    try:
+        render_html(report)
+    except Exception:
+        log.exception("render_html failed: case=%s", case_id)
+
+    job = store.create_job(case_id)
+    store.update_job(
+        job.job_id, status="done", stage="done", progress=100, report=report
+    )
+    return report
 
 
 def run_analysis(case_id: str, job_id: str) -> None:

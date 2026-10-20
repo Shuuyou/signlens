@@ -157,10 +157,25 @@ def run_demo_case(demo_id: str) -> dict[str, str]:
     return {"case_id": case_id, "job_id": job.job_id}
 
 
+@router.post("/demo/{demo_id}/analyze", response_model=Report)
+def analyze_demo_case(demo_id: str) -> Report:
+    """Serverless-safe: load the demo and return the finished report in one request."""
+    case = _get_demo_case(demo_id)
+    case_id = store.create_case(case)
+    return orchestrator.analyze_sync(case_id, case)
+
+
 @router.post("/cases")
 def submit_case(case_input: CaseInput) -> dict[str, str]:
     case_id = store.create_case(case_input)
     return {"case_id": case_id}
+
+
+@router.post("/analyze", response_model=Report)
+def analyze_input(case_input: CaseInput) -> Report:
+    """Serverless-safe: run the whole pipeline and return the report synchronously."""
+    case_id = store.create_case(case_input)
+    return orchestrator.analyze_sync(case_id, case_input)
 
 
 @router.post("/cases/{case_id}/analyze")
@@ -205,5 +220,20 @@ def get_case_report_html(case_id: str) -> HTMLResponse:
         html = render_html(report)
     except Exception as exc:
         log.exception("render_html failed: case=%s", case_id)
+        raise ApiError(f"failed to render report: {exc}", 500) from exc
+    return HTMLResponse(content=html)
+
+
+@router.post("/report/html", response_class=HTMLResponse)
+def render_report_html(report: Report) -> HTMLResponse:
+    """Render a posted report to HTML (stateless; safe on serverless instances)."""
+    try:
+        from app.services.report import render_html
+    except Exception as exc:
+        raise ApiError(f"report service unavailable: {exc}", 500) from exc
+    try:
+        html = render_html(report)
+    except Exception as exc:
+        log.exception("render_html failed for posted report")
         raise ApiError(f"failed to render report: {exc}", 500) from exc
     return HTMLResponse(content=html)
